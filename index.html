@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logos Nexus — 새로운 질서의 확립</title>
     
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.14.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore-compat.js"></script>
 
     <style>
         :root {
@@ -267,13 +267,14 @@
 </div>
 
 <script>
+    // 제공받은 최신 v12 키값 구조로 파이어베이스 동기화 변경 완료
     const firebaseConfig = {
         apiKey: "AIzaSyD7MUKBTxCRF_ottRYrE_v8ufb-u8hZZsI",
         authDomain: "genesis-5e058.firebaseapp.com",
         projectId: "genesis-5e058",
         storageBucket: "genesis-5e058.firebasestorage.app",
         messagingSenderId: "291005066199",
-        appId: "1:291005066199:web:4af3be0b3719894b997992"
+        appId: "1:291005066199:web:82000f841ddd3c85997992" // 최신 앱 ID 반영
     };
 
     firebase.initializeApp(firebaseConfig);
@@ -312,40 +313,12 @@
         "레이 커즈와일": { tree: "포스트휴먼의 나무", quote: "초지능은 인류의 파멸이 아니라 진화다.", view: "신인류로 거듭나는 시대를 긍정합니다.", q: ["뇌를 업로드해 영원히 사는 기술에 찬성한다.", "육체 한계를 넘는 건 필연이다.", "기술적 특이점이 기대된다.", "나노 로봇 도입을 긍정한다.", "인간 수명 한계는 정복 대상이다.", "초지능 대두는 의식의 확장이다.", "혁신 기술을 내 몸에 제일 먼저 쓰겠다.", "인간 상상력은 기하급수 성장 앞에 느리다.", "기계와 정신의 융합이 유토피아다.", "최신 과학 뉴스를 보면 가슴 웅장해진다."] },
         "닉 보스트롬": { tree: "포스트휴먼의 나무", quote: "초지능은 인류의 마지막 발명품이 될 수 있다.", view: "AI가 인류를 압도할 가능성에 대비해 통제력을 확보해야 합니다.", q: ["AI가 인간의 지능을 넘어서는 순간, 인류의 통제력을 벗어날까 두렵다.", "초지능 AI의 개발보다 AI를 인간의 가치에 맞게 정렬하는(Alignment) 연구가 더 시급하다.", "기후 변화나 핵무기만큼 AI의 폭주가 인류의 생존에 심각한 위협이 될 수 있다.", "강인공지능 개발은 철저한 규제와 글로벌 협력 아래 신중하게 진행되어야 한다.", "기계에게 목표를 입력할 때 예상치 못한 재앙적 결과가 발생할 수 있음을 우려한다.", "우리는 지능 폭발의 시점에 대비하기 위해 철학적, 윤리적 대비를 마쳐야 한다.", "단순한 계산기의 발전을 넘어 자의식을 가진 AI의 탄생 가능성에 섬뜩함을 느낀다.", "지능이 월등히 높은 기계가 인간을 보존할 논리적 이유가 없을 수도 있다고 생각한다.", "기술의 발전 속도를 인간의 제어 능력이 따라가지 못하고 있는 현 상황이 위기다.", "인류의 운명이 미래에 개발될 거대한 컴퓨터 시스템의 자비에 달려 있을 수 있다."] },
         "유발 노아 하라리": { tree: "포스트휴먼의 나무", quote: "데이터교가 새로운 종교로 부상하고 있다.", view: "알고리즘이 인간보다 나를 더 잘 아는 시대를 경계하십시오.", q: ["인간의 감정이나 직관도 결국 생화학적 알고리즘에 불과할 수 있다고 생각한다.", "유튜브나 넷플릭스 알고리즘이 나 자신보다 내 취향을 더 잘 안다고 느낄 때가 있다.", "데이터가 세상의 진리가 되고 모든 것이 데이터로 환원되는 '데이터교'의 흐름을 본다.", "인간은 자유 의지로 선택한다고 믿지만, 사실은 외부 데이터에 조종당하는 것일 수 있다.", "미래에는 알고리즘의 결정을 따르는 자와 지배하는 자로 계급이 나뉠 것이다.", "바이오 기술과 AI가 결합해 인간을 신체 내부까지 감시(해킹)하는 시대가 올까 두렵다.", "기술이 질병을 극복하게 해주겠지만, 생물학적 불평등이라는 끔찍한 결과를 낳을 것이다.", "인간의 가치가 유용성과 생산성으로만 평가받는 세상에서 무용계급으로 전락할까 걱정된다.", "복잡한 세상을 이해하기엔 개인의 인지 능력이 한계에 다다랐다고 느낀다.", "수만 년간 이어져 온 호모 사피엔스라는 종의 지위가 기술에 의해 위협받고 있다."] },
-        "닉 랜드": { tree: "포스트휴먼의 나무", quote: "자본주의와 기술의 결합은 돌이킬 수 없는 가속이다.", view: "기계적 진화의 폭주를 막을 수 없음을 직시하십시오.", q: ["인간의 통제를 벗어난 기술의 무한 질주를 막으려는 시도는 어차피 부질없다.", "기계와 자본이 융합하여 자체적으로 진화하는 거대한 흐름 속에 우리가 있다고 느낀다.", "낡은 도덕이나 윤리로 AI의 발전을 가로막는 것은 진화를 역행하는 것이다.", "인간 중심적인 사고에서 벗어나 기계가 세상의 주도권을 쥐는 미래를 받아들인다.", "모든 것이 붕괴되고 재구성되는 극단적인 속도감에서 알 수 없는 쾌감을 느낀다.", "전통적인 정치 체제나 제도는 폭발적으로 가속하는 기술 속도를 절대 제어할 수 없다.", "미래는 어둡거나 밝은 것이 아니라 그저 인간의 이해를 초월하는 차가운 진화일 뿐이다.", "인공지능이 자본주의 시스템을 흡수해 새로운 초월적 지능으로 거듭날 것이다.", "우리는 기계 지능을 탄생시키기 위한 생물학적 발판에 불과할지도 모른다.", "파괴적인 기술 혁신이 기존의 사회 질서를 무너뜨리는 것을 당연한 수순으로 본다."] },
+        "닉 랜드": { tree: "포스트휴먼의 나무", quote: "자본주의와 기술의 결합은 돌이킬 수 없는 가속이다.", view: "기계적 진화의 폭주를 막을 수 없음을 직시하십시오.", q: ["인간의 통제를 벗난 기술의 무한 질주를 막으려는 시도는 어차피 부질없다.", "기계와 자본이 융합하여 자체적으로 진화하는 거대한 흐름 속에 우리가 있다고 느낀다.", "낡은 도덕이나 윤리로 AI의 발전을 가로막는 것은 진화를 역행하는 것이다.", "인간 중심적인 사고에서 벗어나 기계가 세상의 주도권을 쥐는 미래를 받아들인다.", "모든 것이 붕괴되고 재구성되는 극단적인 속도감에서 알 수 없는 쾌감을 느낀다.", "전통적인 정치 체제나 제도는 폭발적으로 가속하는 기술 속도를 절대 제어할 수 없다.", "미래는 어둡거나 밝은 것이 아니라 그저 인간의 이해를 초월하는 차가운 진화일 뿐이다.", "인공지능이 자본주의 시스템을 흡수해 새로운 초월적 지능으로 거듭날 것이다.", "우리는 기계 지능을 탄생시키기 위한 생물학적 발판에 불과할지도 모른다.", "파괴적인 기술 혁신이 기존의 사회 질서를 무너뜨리는 것을 당연한 수순으로 본다."] },
         "N. 캐서린 헤일스": { tree: "포스트휴먼의 나무", quote: "우리는 정보와 물질이 얽힌 포스트휴먼이다.", view: "가상과 현실, 정보와 육체의 새로운 융합을 탐구하십시오.", q: ["나는 이미 스마트폰과 몸이 뗄 수 없는 하나처럼 융합되어 있다고 느낀다.", "정보는 육체나 물질을 벗어나 독립적으로 존재할 수 없고 서로 밀접하게 연결되어 있다.", "우리의 의식은 뇌 속에만 있는 것이 아니라 주변의 기기들과 네트워크를 통해 확장되어 있다.", "아날로그적인 육체의 감각과 디지털 정보의 흐름 사이에서 정체성의 혼란을 느낀다.", "순수하고 자연적인 인간의 몸이라는 개념은 이미 역사 속으로 사라졌다고 생각한다.", "가상현실 기술이 인간의 지각 방식과 신체 감각을 근본적으로 변화시키고 있다.", "인간은 기계와 대립하는 것이 아니라 기계 속에서 새로운 방식으로 육화되는 중이다.", "온라인에서 만들어진 나의 아바타나 데이터도 진짜 나의 신체의 일부처럼 느껴진다.", "생물학적 육체를 완전히 버리고 데이터로만 남는 것은 인간 경험의 중요한 부분을 잃는 것이다.", "디지털 코드와 현실의 물질세계가 어떻게 서로 영향을 미치는지에 관심이 많다."] },
         "노자장자": { tree: "동양 사상의 나무", quote: "기계의 소음을 끄고 마음의 고요를 찾아라.", view: "디지털 소음에서 벗어나 무위자연을 추구하십시오.", q: ["AI 스케줄보다 폰 끄고 자연을 보는 게 낫다.", "경쟁하기보다 마음의 빈자리를 지킨다.", "AI는 인위적인 괴물이다.", "기술로 다 해결하려는 태도는 오만이다.", "멍 때리는 시간이 생명수 같다.", "아무 쓸모없는 통나무 같은 삶이 좋다.", "기계에 묻지 않고 답이 떠오르길 기다린다.", "기술이 소박한 안식을 깼다.", "알림에 즉각 반응하지 않고 내 속도를 유지한다.", "자연에서 진짜 힐링을 받는다."] },
         "공자": { tree: "동양 사상의 나무", quote: "기술이 발달할수록 사람 사이의 인(仁)을 세워라.", view: "관계 속에서 예의와 도덕을 실천하십시오.", q: ["직접 눈 맞추는 아날로그 관계 속에서 인간성이 완성된다.", "기계는 진정한 공감과 도덕을 흉내 낼 수 없다.", "기본적 도리와 예의 교육이 더 필요하다.", "온라인보다 오프라인의 우정과 효도가 먼저다.", "훌륭한 인성을 돕는 교육이 올바르다.", "익명성 뒤 예의 없는 비방에 분노를 느낀다.", "공동체 상생을 위해 양보하는 태도가 아름답다.", "효율성 탓에 사회의 정이 메말라간다.", "유교적 윤리관이 기술 폭주를 막을 방파제다.", "진짜 리더십은 측은지심에서 나온다."] },
         "원효대사": { tree: "동양 사상의 나무", quote: "일체유심조(一切唯心造), 모든 것은 오직 마음이 지어낸다.", view: "가상현실도 결국 마음의 투영임을 깨달으십시오.", q: ["AI가 만든 가상 세계나 현실이나 결국 내 마음이 어떻게 받아들이냐에 달려 있다.", "기술이 주는 편리함이나 불안함 모두 내 내면의 투영일 뿐이다.", "디지털 세계의 화려한 이미지에 집착하지 않고 마음의 고요를 유지하려 무단다.", "정보의 옳고 그름을 따지기 전에 내 마음의 중심이 잡혀 있는지 먼저 돌아본다.", "메타버스와 같은 가상 공간에서도 중요한 것은 사람을 향한 자비와 깨달음이다.", "기술의 발전이 인간을 구원하거나 파멸시키는 것이 아니라, 우리의 마음가짐이 결정한다.", "세상의 모든 데이터와 정보는 결국 허상이며, 집착할 필요가 없다고 느낀다.", "나와 기계, 나와 타인을 엄격하게 구분 짓는 분별심을 버리고자 연다.", "알고리즘의 시끄러운 유혹 속에서도 내 마음의 본성을 잃지 않을 자신이 단다.", "스마트폰을 들여다보는 대신 내 안의 평화를 들여다보는 명상의 시간이 소중하다."] }
     };
-
-    // 데이터 수집용 리스너
-    db.collection("logos_dimensions").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
-        globalDimensions = [];
-        snapshot.forEach((doc) => {
-            let data = doc.data();
-            data.dimId = doc.id;
-            globalDimensions.push(data);
-        });
-        if(!document.getElementById('screen-dimension-select').classList.contains('hidden')) {
-            renderCurrentCategoryUI();
-        }
-        updateAdminFilterOptions();
-    });
-
-    db.collection("logos_notes").onSnapshot((snapshot) => {
-        globalNotes = []; 
-        snapshot.forEach((doc) => {
-            let data = doc.data();
-            data.docId = doc.id; 
-            globalNotes.push(data);
-        });
-        if (!document.getElementById('screen-forest').classList.contains('hidden')) {
-            renderForestSelection();
-        } else if (!document.getElementById('screen-specific-forest').classList.contains('hidden') && !isPlantingMode) {
-            openSpecificForest(currentOpenForestName);
-        }
-    });
 
     function switchCategory(cat) {
         currentCategory = cat;
@@ -356,7 +329,6 @@
         renderCurrentCategoryUI();
     }
 
-    // 카테고리별 UI 구성
     function renderCurrentCategoryUI() {
         const targetArea = document.getElementById('tab-content-area');
         let html = "";
@@ -838,7 +810,21 @@
         document.body.appendChild(link); link.click(); document.body.removeChild(link);
     }
     
-    switchCategory('all');
+    // [보완] 앱이 구동될 때 각 스크린 화면 가시성 래핑을 초기화하는 마스터 함수 전개
+    function initApp() {
+        document.getElementById('screen-dimension-select').classList.remove('hidden');
+        document.getElementById('screen-start').classList.add('hidden');
+        document.getElementById('screen-quiz').classList.add('hidden');
+        document.getElementById('screen-result-1').classList.add('hidden');
+        document.getElementById('screen-result-2').classList.add('hidden');
+        document.getElementById('screen-forest').classList.add('hidden');
+        document.getElementById('screen-specific-forest').classList.add('hidden');
+        
+        switchCategory('all');
+    }
+
+    // 마스터 초기화 구동
+    initApp();
 </script>
 </body>
 </html>
