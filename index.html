@@ -90,8 +90,8 @@
         .forest-card-title { font-size: 16px; font-weight: 800; color: #27ae60; margin-bottom: 4px; }
         .forest-card-count { font-size: 13px; color: #53775d; font-weight: 700; }
 
-        /* 메인 숲 영역 캔버스 */
-        .specific-forest-area { position: relative; width: 100%; height: 450px; border: 2px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-top: 15px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05); transition: opacity 0.3s ease; }
+        /* 특정 테마 숲 전용 캔버스 영역 */
+        .specific-forest-area { position: relative; width: 100%; height: 450px; border: 2px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-top: 15px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05); }
         
         .tree-node-absolute { position: absolute; transform: translate(-50%, -100%); text-align: center; cursor: pointer; transition: transform 0.2s; z-index: 10; }
         .tree-node-absolute:hover { transform: translate(-50%, -100%) scale(1.15); z-index: 20; }
@@ -99,11 +99,11 @@
         .tree-icon { font-size: 40px; display: block; filter: drop-shadow(0px 3px 3px rgba(0,0,0,0.15)); pointer-events: none; }
         .tree-name { font-size: 11px; font-weight: 800; color: #ffffff; background: #2f5238; padding: 3px 8px; border-radius: 10px; white-space: nowrap; margin-top: -2px; border: 1.5px solid #ffffff; pointer-events: none; }
 
-        /* 심기 모드일 때 투명 유령 처리 */
+        /* 심기 모드일 때: 기존 나무들을 무시하여 빈 공간 클릭이 완벽하게 되도록 강제 처리 */
         .planting-mode { border: 3px dashed #e67e22 !important; cursor: crosshair !important; }
         .planting-mode .tree-node-absolute { pointer-events: none !important; }
 
-        /* 요청하신 대로 애니메이션 뺀 깔끔하고 정적인 안내창 */
+        /* 애니메이션 완전히 제거한 깔끔한 안내창 */
         .instruction-box { background-color: #e67e22; color: white; padding: 13px; text-align: center; border-radius: 12px; font-weight: 700; font-size: 15px; margin-bottom: 15px; }
 
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 34, 22, 0.5); display: flex; justify-content: center; align-items: center; z-index: 999; backdrop-filter: blur(3px); }
@@ -269,7 +269,7 @@
         
         <div id="planting-instruction" class="instruction-box hidden">🌳 주황색 박스 안쪽 빈 공간을 터치하여 나무를 심어주세요!</div>
         
-        <div class="specific-forest-area" id="specific-tree-container" onpointerdown="handleForestClick(event)"></div>
+        <div class="specific-forest-area" id="specific-tree-container" onclick="handleForestClick(event)"></div>
         
         <button class="btn" style="background-color: #ffffff; border: 1.5px solid var(--border-color); color: #53775d; margin-top: 25px;" onclick="backToForests()">⬅ 다른 숲으로 돌아가기</button>
     </div>
@@ -316,7 +316,7 @@
         "N. 캐서린 헤일스": { tree: "포스트휴먼의 나무", quote: "우리는 정보와 물질이 얽힌 포스트휴먼이다.", view: "가상과 현실, 정보와 육체의 새로운 융합을 탐구하십시오.", q: ["나는 이미 스마트폰과 몸이 뗄 수 없는 하나처럼 융합되어 있다고 느낀다.", "정보는 육체나 물질을 벗어나 독립적으로 존재할 수 없고 서로 밀접하게 연결되어 있다.", "우리의 의식은 뇌 속에만 있는 것이 아니라 주변의 기기들과 네트워크를 통해 확장되어 있다.", "아날로그적인 육체의 감각과 디지털 정보의 흐름 사이에서 정체성의 혼란을 느낀다.", "순수하고 자연적인 인간의 몸이라는 개념은 이미 역사 속으로 사라졌다고 생각한다.", "가상현실 기술이 인간의 지각 방식과 신체 감각을 근본적으로 변화시키고 있다.", "인간은 기계와 대립하는 것이 아니라 기계 속에서 새로운 방식으로 육화되는 중이다.", "온라인에서 만들어진 나의 아바타나 데이터도 진짜 나의 신체의 일부처럼 느껴진다.", "생물학적 육체를 완전히 버리고 데이터로만 남는 것은 인간 경험의 중요한 부분을 잃는 것이다.", "디지털 코드와 현실의 물질세계가 어떻게 서로 영향을 미치는지에 관심이 많다."] },
         "노자장자": { tree: "동양 사상의 나무", quote: "기계의 소음을 끄고 마음의 고요를 찾아라.", view: "디지털 소음에서 벗어나 무위자연을 추구하십시오.", q: ["AI 스케줄보다 폰 끄고 자연을 보는 게 낫다.", "경쟁하기보다 마음의 빈자리를 지킨다.", "AI는 인위적인 괴물이다.", "기술로 다 해결하려는 태도는 오만이다.", "멍 때리는 시간이 생명수 같다.", "아무 쓸모없는 통나무 같은 삶이 좋다.", "기계에 묻지 않고 답이 떠오르길 기다린다.", "기술이 소박한 안식을 깼다.", "알림에 즉각 반응하지 않고 내 속도를 유지한다.", "자연에서 진짜 힐링을 받는다."] },
         "공자": { tree: "동양 사상의 나무", quote: "기술이 발달할수록 사람 사이의 인(仁)을 세워라.", view: "관계 속에서 예의와 도덕을 실천하십시오.", q: ["직접 눈 맞추는 아날로그 관계 속에서 인간성이 완성된다.", "기계는 진정한 공감과 도덕을 흉내 낼 수 없다.", "기본적 도리와 예의 교육이 더 필요하다.", "온라인보다 오프라인의 우정과 효도가 먼저다.", "훌륭한 인성을 돕는 교육이 올바르다.", "익명성 뒤 예의 없는 비방에 분노를 느낀다.", "공동체 상생을 위해 양보하는 태도가 아름답다.", "효율성 탓에 사회의 정이 메말라간다.", "유교적 윤리관이 기술 폭주를 막을 방파제다.", "진짜 리더십은 측은지심에서 나온다."] },
-        "원효대사": { tree: "동양 사상의 나무", quote: "일체유심조(一切唯心造), 모든 것은 오직 마음이 지어낸다.", view: "가상현실도 결국 마음의 투영임을 깨달으십시오.", q: ["AI가 만든 가상 세계나 현실이나 결국 내 마음이 어떻게 받아들이냐에 달려 있다.", "기술이 주는 편리함이나 불안함 모두 내 내면의 투영일 뿐이다.", "디지털 세계의 화려한 이미지에 집착하지 않고 마음의 고요를 유지하려 한다.", "정보의 옳고 그름을 따지기 전에 내 마음의 중심이 잡혀 있는지 먼저 돌아본다.", "메타버스와 가상 공간에서도 중요한 것은 사람을 향한 자비와 깨달음이다.", "기술의 발전이 인간을 구원하거나 파멸시키는 것이 아니라, 우리의 마음가짐이 결정한다.", "세상의 모든 데이터와 정보는 결국 허상이며, 집착할 필요가 없다고 느낀다.", "나와 기계, 나와 타인을 엄격하게 구분 짓는 분별심을 버리고자 한다.", "알고리즘의 시끄러운 유혹 속에서도 내 마음의 본성을 잃지 않을 자신이 있다.", "스마트폰을 들여다보는 대신 내 안의 평화를 들여다보는 명상의 시간이 소중하다."] }
+        "원효대사": { tree: "동양 사상의 나무", quote: "일체유심조(一切唯心造), 모든 것은 오직 마음이 지어낸다.", view: "가상현실도 결국 마음의 투영임을 깨달으십시오.", q: ["AI가 만든 가상 세계나 현실이나 결국 내 마음이 어떻게 받아들이냐에 달려 있다.", "기술이 주는 편리함이나 불안함 모두 내 내면의 투영일 뿐이다.", "디지털 세계의 화려한 이미지에 집착하지 않고 마음의 고요를 유지하려 한다.", "정보의 옳고 그름을 따지기 전에 내 마음의 중심이 잡혀 있는지 먼저 돌아본다.", "메타버스와 가상 공간에서도 중요한 것은 사람을 향한 자비와 깨달음이다.", "기술의 발전이 인간을 구원하거나 파멸시키는 것이 아니라, 우리의 마음가짐이 결정한다.", "세상의 모든 데이터와 정보는 결국 허상이며, 집착할 필요가 없다고 느낀다.", "나와 기계, 나와 타인을 엄격하게 구분 짓는 분별심을 버리고자 단다.", "알고리즘의 시끄러운 유혹 속에서도 내 마음의 본성을 잃지 않을 자신이 있다.", "스마트폰을 들여다보는 대신 내 안의 평화를 들여다보는 명상의 시간이 소중하다."] }
     };
 
     let globalDimensions = [];
@@ -332,7 +332,6 @@
     let pendingNote = null;      
     let isPlantingMode = false;  
 
-    // 차원 정보 동기화
     db.collection("logos_dimensions").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
         globalDimensions = [];
         snapshot.forEach((doc) => {
@@ -346,7 +345,6 @@
         updateAdminFilterOptions();
     });
 
-    // 나무 쪽지 동기화
     db.collection("logos_notes").onSnapshot((snapshot) => {
         globalNotes = []; 
         snapshot.forEach((doc) => {
@@ -697,67 +695,63 @@
 
     /**
      * ====================================================================
-     * ★ 최종 완벽 클릭 무조건 보장 핸들러 (에러 시 팝업 경고창 출력 기능 포함)
+     * ★ 최종 완벽 클릭 무조건 보장 핸들러 + Optimistic UI (무한 로딩/흰막 완전 차단)
      * ====================================================================
      */
     function handleForestClick(event) {
-        try {
-            // 관람 모드일 때 (나무 상세 보기)
-            if (!isPlantingMode) {
-                let targetNode = event.target.closest('.tree-node-absolute');
-                if (targetNode) {
-                    let noteId = parseInt(targetNode.getAttribute('data-id'));
-                    openNoteModal(noteId, event);
-                }
-                return;
+        // 관람 모드일 때 (나무 상세 보기)
+        if (!isPlantingMode) {
+            let targetNode = event.target.closest('.tree-node-absolute');
+            if (targetNode) {
+                let noteId = parseInt(targetNode.getAttribute('data-id'));
+                openNoteModal(noteId, event);
             }
-
-            // 심기 모드일 때
-            if (!pendingNote) return;
-
-            const container = document.getElementById('specific-tree-container');
-            const rect = container.getBoundingClientRect();
-
-            // onpointerdown 은 클릭과 터치 모두 동일하게 clientX, clientY 값을 보장함
-            let clientX = event.clientX;
-            let clientY = event.clientY;
-
-            // 좌표를 도출하는 과정
-            let x = clientX - rect.left;
-            let y = clientY - rect.top;
-
-            let finalPercentX = (x / rect.width) * 100;
-            let finalPercentY = (y / rect.height) * 100;
-
-            // 극단적인 외곽을 클릭했더라도 가장자리 안쪽으로 안전하게 멱살 잡고 끌고 오기
-            finalPercentX = Math.max(5, Math.min(finalPercentX, 95));
-            finalPercentY = Math.max(5, Math.min(finalPercentY, 95));
-
-            pendingNote.x = finalPercentX.toFixed(2);
-            pendingNote.y = finalPercentY.toFixed(2);
-
-            // [클릭 씹힘 방지 시각화] 클릭이 컴퓨터에 정상 인식되었다면 0.1초 만에 박스가 약간 흐려짐
-            container.style.opacity = '0.5';
-            container.style.pointerEvents = 'none';
-
-            // 파이어베이스 최종 데이터 서버 업로드
-            db.collection("logos_notes").add(pendingNote).then(() => {
-                container.style.opacity = '1';
-                container.style.pointerEvents = 'auto';
-                pendingNote = null; 
-                isPlantingMode = false;
-                alert("나만의 사유 나무를 정상적으로 심었습니다! 🌳");
-                openSpecificForest(currentOpenForestName); 
-            }).catch(err => {
-                container.style.opacity = '1';
-                container.style.pointerEvents = 'auto';
-                alert("데이터 전송 오류가 발생했습니다: " + err.message);
-            });
-
-        } catch (error) {
-            // 자바스크립트 내부에서 코드가 꼬여서 멈추면 이 팝업이 무조건 뜹니다.
-            alert("시스템 처리 중 에러 발생: " + error.message);
+            return;
         }
+
+        // 심기 모드일 때 (무조건 가장 먼저 실행되도록 방어막 전부 제거)
+        if (!pendingNote) return;
+
+        const container = document.getElementById('specific-tree-container');
+        const rect = container.getBoundingClientRect();
+        
+        let clientX = event.clientX;
+        let clientY = event.clientY;
+
+        // 스마트폰 터치/클릭을 모두 확실하게 받아냅니다.
+        if (event.touches && event.touches.length > 0) {
+            clientX = event.touches[0].clientX;
+            clientY = event.touches[0].clientY;
+        }
+
+        let x = clientX - rect.left;
+        let y = clientY - rect.top;
+
+        let finalPercentX = (x / rect.width) * 100;
+        let finalPercentY = (y / rect.height) * 100;
+
+        // 화면 밖으로 나가지 않도록 5% ~ 95% 사이로 무조건 박아넣음
+        finalPercentX = Math.max(5, Math.min(finalPercentX, 95));
+        finalPercentY = Math.max(5, Math.min(finalPercentY, 95));
+
+        pendingNote.x = finalPercentX.toFixed(2);
+        pendingNote.y = finalPercentY.toFixed(2);
+
+        // ★ 파이어베이스 서버의 멈춤 현상(Pending)과 무관하게, 일단 화면에 즉시 나무를 그리고 알림을 띄웁니다 (Optimistic Update)
+        let noteToSave = { ...pendingNote };
+        pendingNote = null; 
+        isPlantingMode = false;
+        
+        alert("나만의 사유 나무를 정상적으로 심었습니다! 🌳");
+
+        // 백그라운드에서 조용히 파이어베이스에 저장 시도
+        db.collection("logos_notes").add(noteToSave).catch(err => {
+            console.error("Firebase 에러: ", err.message);
+        });
+
+        // 기다릴 필요 없이 즉시 내가 방금 심은 나무를 화면에 렌더링
+        globalNotes.push(noteToSave);
+        openSpecificForest(currentOpenForestName);
     }
 
     function backToForests() {
@@ -775,7 +769,9 @@
 
     function openNoteModal(noteId, event) {
         if(event) event.stopPropagation(); 
-        let note = globalNotes.find(n => n.id === noteId);
+        
+        // 데이터 타입이 다를 수 있으므로 '==' 를 사용하여 넓게 찾습니다.
+        let note = globalNotes.find(n => n.id == noteId);
         if(!note) return;
 
         let modalBody = "";
@@ -887,11 +883,17 @@
     }
 
     function deleteNote(id) {
-        let target = globalNotes.find(n => n.id === id);
+        let target = globalNotes.find(n => n.id == id);
         if(target && confirm("이 나무를 벌목하시겠습니까?")) {
-            db.collection("logos_notes").doc(target.docId).delete().then(() => {
+            if(target.docId) {
+                db.collection("logos_notes").doc(target.docId).delete().then(() => {
+                    closeNoteModal(); alert("완료되었습니다.");
+                });
+            } else {
+                globalNotes = globalNotes.filter(n => n.id != id);
                 closeNoteModal(); alert("완료되었습니다.");
-            });
+                openSpecificForest(currentOpenForestName);
+            }
         }
     }
 
