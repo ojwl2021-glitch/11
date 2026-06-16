@@ -10,127 +10,137 @@
 
     <style>
         :root {
-            --bg-color: #f4fbf4;
+            --bg-color: #f1f9f3;
             --card-bg: #ffffff;
-            --text-color: #2d4a36;
-            --accent-color: #55c875;
-            --accent-hover: #45a860; 
-            --border-color: #d1ebd8;
+            --text-color: #1e3525;
+            --accent-color: #3cae60;
+            --accent-hover: #2d8a4a; 
+            --border-color: #cee7d5;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            margin: 0; padding: 20px; display: flex; justify-content: center;
-            align-items: center; min-height: 95vh;
+            margin: 0; padding: 15px; display: flex; justify-content: center;
+            align-items: center; min-height: 98vh;
         }
 
         .container {
-            width: 100%; max-width: 700px; background-color: var(--card-bg);
-            border: 2px solid var(--border-color); 
-            border-radius: 30px;
-            padding: 40px 30px; 
-            box-shadow: 0 15px 35px rgba(85, 200, 117, 0.15);
+            width: 100%; max-width: 650px; background-color: var(--card-bg);
+            border: 1px solid var(--border-color); 
+            border-radius: 24px;
+            padding: 35px 25px; 
+            box-shadow: 0 20px 40px rgba(30, 53, 37, 0.06);
             box-sizing: border-box; position: relative;
         }
 
         .hidden { display: none !important; }
-        h1, h2, h3, h4 { color: #1e3a26; text-align: center; font-weight: 800; }
-        p { line-height: 1.6; }
+        h1, h2, h3, h4 { color: #112216; text-align: center; font-weight: 800; margin-top: 0; }
+        p { line-height: 1.6; font-size: 15px; }
 
         .btn {
             background-color: var(--accent-color); color: #ffffff; border: none;
-            padding: 14px 24px; font-size: 16px; border-radius: 50px; 
+            padding: 15px 25px; font-size: 16px; border-radius: 14px; 
             cursor: pointer; display: block; margin: 20px auto 0; 
-            transition: all 0.2s; font-weight: bold; width: 100%; max-width: 350px;
-            box-shadow: 0 4px 10px rgba(85, 200, 117, 0.3);
-            text-align: center;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); font-weight: 700; width: 100%; max-width: 340px;
+            box-shadow: 0 4px 12px rgba(60, 174, 96, 0.2);
+            text-align: center; box-sizing: border-box;
         }
-        .btn:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+        .btn:hover { background-color: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(60, 174, 96, 0.3); }
 
-        .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; margin-bottom: 8px; font-size: 14px; color: #4b7a59; font-weight: bold; }
+        .input-group { margin-bottom: 18px; }
+        .input-group label { display: block; margin-bottom: 8px; font-size: 14px; color: #355e42; font-weight: 700; }
         .text-input { 
-            width: 100%; padding: 15px; background-color: #f9fdfa; 
-            border: 2px solid var(--border-color); border-radius: 16px; 
-            color: #2d4a36; box-sizing: border-box; font-size: 15px; transition: border 0.3s;
+            width: 100%; padding: 14px; background-color: #fafdfa; 
+            border: 1.5px solid var(--border-color); border-radius: 12px; 
+            color: var(--text-color); box-sizing: border-box; font-size: 15px; transition: all 0.2s;
         }
-        .text-input:focus { border-color: var(--accent-color); outline: none; }
+        .text-input:focus { border-color: var(--accent-color); background-color: #ffffff; outline: none; box-shadow: 0 0 0 3px rgba(60, 174, 96, 0.1); }
         
-        select.text-input { appearance: none; cursor: pointer; }
+        select.text-input { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23355e42' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 15px center; padding-right: 40px; }
 
-        .main-tabs { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 20px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
-        .tab-btn { flex: 1; padding: 12px 5px; border: 1px solid var(--border-color); background: #fff; border-radius: 12px; font-weight: bold; cursor: pointer; color: var(--text-color); font-size: 14px; transition: all 0.2s; }
-        .tab-btn.active { background: var(--accent-color); color: #fff; border-color: var(--accent-color); }
+        .main-tabs { display: flex; justify-content: space-between; gap: 6px; margin-bottom: 25px; background: #eef5f0; padding: 5px; border-radius: 14px; }
+        .tab-btn { flex: 1; padding: 10px 5px; border: none; background: transparent; border-radius: 10px; font-weight: 700; cursor: pointer; color: #53775d; font-size: 14px; transition: all 0.15s; }
+        .tab-btn.active { background: var(--card-bg); color: var(--accent-color); box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
 
-        .search-wrapper { display: flex; gap: 8px; margin-bottom: 15px; }
-        .search-input { flex: 1; padding: 12px; border: 2px solid var(--border-color); border-radius: 12px; color: #2d4a36; font-size: 14px; }
-        .search-btn { background: #4b7a59; color: white; border: none; padding: 0 15px; border-radius: 12px; cursor: pointer; font-weight: bold; }
+        .search-wrapper { display: flex; gap: 8px; margin-bottom: 20px; }
+        .search-input { flex: 1; padding: 12px; border: 1.5px solid var(--border-color); border-radius: 12px; color: var(--text-color); font-size: 14px; }
+        .search-btn { background: #355e42; color: white; border: none; padding: 0 20px; border-radius: 12px; cursor: pointer; font-weight: 700; }
 
-        .creation-box { background: #f4fbf4; border: 2px dashed var(--accent-color); border-radius: 20px; padding: 20px; margin-top: 15px; }
+        .creation-box { background: #fafdfa; border: 2px dashed var(--accent-color); border-radius: 16px; padding: 20px; margin-top: 15px; }
 
-        .progress-bar { text-align: right; font-size: 14px; color: #6b9e7d; margin-bottom: 15px; font-weight: bold; }
-        .question-text { font-size: 20px; font-weight: 700; margin-bottom: 30px; min-height: 60px; text-align: center; word-break: keep-all; color: #1e3a26; }
-        .score-buttons { display: flex; justify-content: space-between; gap: 10px; }
+        .progress-bar { text-align: right; font-size: 14px; color: #53775d; margin-bottom: 20px; font-weight: 700; }
+        .question-text { font-size: 19px; font-weight: 700; margin-bottom: 35px; min-height: 60px; text-align: center; word-break: keep-all; color: #112216; line-height: 1.5; }
+        .score-buttons { display: flex; justify-content: space-between; gap: 8px; }
         .score-btn {
-            flex: 1; background-color: #ffffff; border: 2px solid var(--border-color);
-            color: var(--text-color); padding: 18px 5px; border-radius: 20px; 
-            cursor: pointer; font-size: 15px; font-weight: bold; word-break: keep-all; transition: all 0.2s;
+            flex: 1; background-color: #ffffff; border: 1.5px solid var(--border-color);
+            color: var(--text-color); padding: 16px 4px; border-radius: 14px; 
+            cursor: pointer; font-size: 14px; font-weight: 700; word-break: keep-all; transition: all 0.15s; line-height: 1.4;
         }
-        .score-btn:hover { background-color: var(--accent-color); color: white; border-color: var(--accent-color); transform: scale(1.05); }
+        .score-btn:hover { background-color: var(--accent-color); color: white; border-color: var(--accent-color); }
 
-        .philosopher-title { font-size: 30px; color: #ff8c42; margin-top: 10px; text-align: center; font-weight: 900; text-shadow: 1px 1px 0px rgba(0,0,0,0.05); }
-        .quote-box { background-color: #f4fbf4; border-radius: 16px; border-left: 6px solid var(--accent-color); padding: 20px; font-style: italic; margin: 25px 0; color: #2d4a36; font-weight: bold; }
+        .philosopher-title { font-size: 32px; color: #e67e22; margin-top: 10px; text-align: center; font-weight: 900; }
+        .quote-box { background-color: #fafdfa; border-radius: 14px; border-left: 5px solid var(--accent-color); padding: 20px; font-style: italic; margin: 25px 0; color: #2d4c35; font-weight: 700; font-size: 16px; line-height: 1.6; }
 
-        .forest-split-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
-        .forest-card { background-color: #ffffff; border: 2px solid var(--border-color); border-radius: 24px; padding: 25px 10px; text-align: center; cursor: pointer; transition: transform 0.2s, background 0.2s, border-color 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-        .forest-card:hover { transform: translateY(-5px); background-color: #f4fbf4; border-color: var(--accent-color); }
-        .forest-card-icon { font-size: 50px; margin-bottom: 10px; }
-        .forest-card-title { font-size: 17px; font-weight: 900; color: #3ea35b; margin-bottom: 5px; }
-        .forest-card-count { font-size: 14px; color: #6b9e7d; font-weight: bold; }
+        .forest-split-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
+        .forest-card { background-color: #ffffff; border: 1.5px solid var(--border-color); border-radius: 18px; padding: 22px 10px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .forest-card:hover { transform: translateY(-3px); border-color: var(--accent-color); box-shadow: 0 8px 20px rgba(0,0,0,0.03); }
+        .forest-card-icon { font-size: 44px; margin-bottom: 8px; }
+        .forest-card-title { font-size: 16px; font-weight: 800; color: #27ae60; margin-bottom: 4px; }
+        .forest-card-count { font-size: 13px; color: #53775d; font-weight: 700; }
 
-        /* 절대 좌표 숲 맵 메커니즘 전면 가동 */
-        .specific-forest-area { position: relative; width: 100%; height: 450px; border: 4px solid var(--border-color); border-radius: 24px; overflow: hidden; margin-top: 15px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1); }
-        .tree-node-absolute { position: absolute; transform: translate(-50%, -100%); text-align: center; cursor: pointer; transition: transform 0.2s; }
-        .tree-node-absolute:hover { transform: translate(-50%, -100%) scale(1.15); z-index: 10; }
-        .tree-icon { font-size: 42px; display: block; filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.3)); }
+        /* 특정 테마 숲 전용 캔버스 영역 */
+        .specific-forest-area { position: relative; width: 100%; height: 450px; border: 2px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-top: 15px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05); }
         
-        .tree-name { font-size: 12px; font-weight: 800; color: #ffffff; background: #4b7a59; padding: 4px 10px; border-radius: 12px; white-space: nowrap; margin-top: -2px; border: 2px solid #ffffff; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-
-        .planting-mode { border: 4px dashed #ff8c42 !important; cursor: crosshair !important; opacity: 0.9; }
-        .instruction-box { background-color: #ff8c42; color: white; padding: 12px; text-align: center; border-radius: 16px; font-weight: bold; font-size: 15px; margin-bottom: 15px; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(0.98); } 50% { transform: scale(1.02); } 100% { transform: scale(0.98); } }
-
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(20, 40, 25, 0.6); display: flex; justify-content: center; align-items: center; z-index: 999; backdrop-filter: blur(4px); }
-        .sticky-note { position: relative; background-color: #fffcd6; color: #4a3e20; padding: 30px; border-radius: 20px; width: 90%; max-width: 420px; font-size: 15px; border: 2px solid #e2d798; box-shadow: 0 15px 30px rgba(0,0,0,0.2); line-height: 1.6; animation: fadeIn 0.2s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        .note-header { font-weight: 900; margin-bottom: 15px; font-size: 18px; color: #a18012; border-bottom: 2px dashed #e2d798; padding-bottom: 10px; }
-        .modal-close-btn { background: #e2d798; color: #4a3e20; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-size: 14px; font-weight: bold; display: block; margin: 25px auto 0; transition: background 0.2s; }
-        .modal-close-btn:hover { background: #d1c583; }
-        .delete-btn { position: absolute; top: 15px; right: 15px; background: #ff6b6b; color: white; border: none; padding: 6px 12px; border-radius: 10px; cursor: pointer; font-size: 12px; font-weight: bold; }
+        /* 나무 노드 기본 속성 (클릭 가능) */
+        .tree-node-absolute { position: absolute; transform: translate(-50%, -100%); text-align: center; cursor: pointer; transition: transform 0.2s; z-index: 10; }
+        .tree-node-absolute:hover { transform: translate(-50%, -100%) scale(1.15); z-index: 20; }
         
-        .admin-trigger { background: none; border: none; color: #a1c7a8; font-size: 12px; cursor: pointer; margin-top: 20px; text-decoration: underline; float: right; }
-        .admin-dashboard { background-color: #f4fbf4; border: 2px solid var(--border-color); border-radius: 20px; padding: 25px; margin-top: 30px; display: none; }
-        .admin-dashboard h3 { color: #3ea35b; margin-top: 0; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
-        .stat-section h4 { color: #2d4a36; margin: 10px 0 10px 0; font-size: 16px; font-weight: bold; text-align: left; }
-        .bar-wrap { display: flex; align-items: center; margin-bottom: 10px; font-size: 14px; font-weight: bold;}
-        .bar-label { width: 140px; color: #4b7a59; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; text-align: left; }
-        .bar-bg { flex: 1; background-color: #ffffff; height: 16px; border-radius: 10px; margin: 0 10px; overflow: hidden; position: relative; border: 1px solid var(--border-color); }
-        .bar-fill { height: 100%; background-color: #ff8c42; border-radius: 10px; transition: width 0.5s ease-in-out; }
+        .tree-icon { font-size: 40px; display: block; filter: drop-shadow(0px 3px 3px rgba(0,0,0,0.15)); pointer-events: none; }
+        .tree-name { font-size: 11px; font-weight: 800; color: #ffffff; background: #2f5238; padding: 3px 8px; border-radius: 10px; white-space: nowrap; margin-top: -2px; border: 1.5px solid #ffffff; pointer-events: none; }
+
+        /* [해결 핵심] 심기 모드 발동 시에만 기존 나무들을 투명 인간 취급하여 클릭 씹힘을 원천 차단 */
+        .planting-mode { border: 2.5px dashed #e67e22 !important; cursor: crosshair !important; }
+        .planting-mode .tree-node-absolute { pointer-events: none !important; }
+
+        .instruction-box { background-color: #e67e22; color: white; padding: 13px; text-align: center; border-radius: 12px; font-weight: 700; font-size: 15px; margin-bottom: 15px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.99); } 50% { transform: scale(1.01); } 100% { transform: scale(0.99); } }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 34, 22, 0.5); display: flex; justify-content: center; align-items: center; z-index: 999; backdrop-filter: blur(3px); }
+        .sticky-note {
+            position: relative; background-color: #fffde6; color: #3a321a; padding: 25px; border-radius: 16px; width: 88%; max-width: 400px; font-size: 15px; border: 1px solid #e6db9c; box-shadow: 0 15px 35px rgba(0,0,0,0.15); line-height: 1.6; animation: fadeIn 0.25s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .note-header { font-weight: 800; margin-bottom: 12px; font-size: 17px; color: #8e741a; border-bottom: 1.5px dashed #e6db9c; padding-bottom: 8px; }
+        .modal-close-btn { background: #e6db9c; color: #3a321a; border: none; padding: 10px 22px; border-radius: 12px; cursor: pointer; font-size: 14px; font-weight: 700; display: block; margin: 20px auto 0; }
+        .delete-btn { position: absolute; top: 15px; right: 15px; background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 8px; cursor: pointer; font-size: 11px; font-weight: 700; }
+        
+        .admin-trigger { background: none; border: none; color: #8cb496; font-size: 12px; cursor: pointer; margin-top: 20px; text-decoration: underline; float: right; }
+        .admin-dashboard { background-color: #fafdfa; border: 1.5px solid var(--border-color); border-radius: 16px; padding: 20px; margin-top: 25px; display: none; }
+        .admin-dashboard h3 { color: #27ae60; border-bottom: 1.5px solid var(--border-color); padding-bottom: 8px; }
+        .stat-section h4 { color: var(--text-color); margin: 10px 0; font-size: 15px; font-weight: 700; text-align: left; }
+        .bar-wrap { display: flex; align-items: center; margin-bottom: 8px; font-size: 13px; font-weight: 700;}
+        .bar-label { width: 130px; color: #355e42; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; text-align: left; }
+        .bar-bg { flex: 1; background-color: #ffffff; height: 14px; border-radius: 8px; margin: 0 10px; overflow: hidden; position: relative; border: 1px solid var(--border-color); }
+        .bar-fill { height: 100%; background-color: #e67e22; border-radius: 8px; transition: width 0.5s ease; }
         .bar-fill.philo { background-color: var(--accent-color); }
-        .bar-fill.age { background-color: #4ba2da; }
-        .bar-pct { width: 45px; text-align: right; color: #2d4a36; }
+        .bar-fill.age { background-color: #3498db; }
+        .bar-pct { width: 45px; text-align: right; color: var(--text-color); }
 
-        .dimension-list-container { margin: 10px 0; max-height: 280px; overflow-y: auto; border: 2px solid var(--border-color); border-radius: 20px; padding: 10px; background: #fafdfb; }
-        .dimension-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border-bottom: 1px solid #e8f7ed; cursor: pointer; border-radius: 10px; transition: background 0.2s; }
-        .dimension-item:hover { background-color: #edf9f0; }
+        .dimension-list-container { margin: 10px 0; max-height: 250px; overflow-y: auto; border: 1.5px solid var(--border-color); border-radius: 16px; padding: 8px; background: #fdfdfd; }
+        .dimension-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-bottom: 1px solid #f0f7f2; cursor: pointer; border-radius: 10px; transition: background 0.15s; }
+        .dimension-item:hover { background-color: #f0f7f2; }
         .dimension-item:last-child { border-bottom: none; }
-        .dim-badge { font-size: 11px; padding: 3px 8px; border-radius: 30px; font-weight: bold; margin-left: 5px;}
-        .badge-public { background: #e3f9e5; color: #2b803c; }
-        .badge-private { background: #ffebeb; color: #c94a4a; }
-        .badge-count { background: #e3f2fd; color: #1e88e5; }
-        .toggle-status-btn { background: #4b7a59; color: white; border: none; padding: 4px 8px; border-radius: 6px; font-size: 11px; cursor: pointer; }
+        .dim-badge { font-size: 11px; padding: 2px 6px; border-radius: 6px; font-weight: 700; margin-left: 4px;}
+        .badge-public { background: #e8f8f0; color: #2e7d32; }
+        .badge-private { background: #fdeded; color: #c62828; }
+        .badge-count { background: #e3f2fd; color: #1565c0; }
+        .toggle-status-btn { background: #355e42; color: white; border: none; padding: 4px 8px; border-radius: 6px; font-size: 11px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -138,7 +148,7 @@
 <div class="container">
     <div id="screen-dimension-select">
         <h1>Logos Nexus</h1>
-        <p style="text-align: center; color: #6b9e7d; font-weight: bold;">로고스 숲의 차원 시스템</p>
+        <p style="text-align: center; color: #53775d; font-weight: 700;">로고스 숲의 차원 시스템</p>
         
         <div class="main-tabs">
             <button class="tab-btn active" id="tab-all" onclick="switchCategory('all')">모두 함께</button>
@@ -154,32 +164,32 @@
     </div>
 
     <div id="screen-start" class="hidden">
-        <h1 id="selected-dim-title" style="color: #3ea35b; font-size: 24px;">로고스 공간</h1>
-        <p style="text-align: center; color: #6b9e7d; font-weight: bold;">초A.I. 시대, 나의 철학적 성향과 새로운 질서 확립</p>
+        <h1 id="selected-dim-title" style="color: #27ae60; font-size: 22px;">로고스 공간</h1>
+        <p style="text-align: center; color: #53775d; font-weight: 700; margin-bottom: 25px;">초A.I. 시대, 나의 철학적 성향과 새로운 질서 확립</p>
         
-        <div class="input-group" style="margin-top: 20px; padding: 15px; background: #f4fbf4; border-radius: 16px; border: 2px solid var(--border-color);">
-            <label for="user-age"> 나이(연령)를 입력해주세요 <span style="color:red;">*필수</span></label>
+        <div class="input-group">
+            <label for="user-age"> 나이(연령)를 입력해주세요 <span style="color:#e74c3c;">*필수</span></label>
             <input type="number" id="user-age" class="text-input" placeholder="예: 18" min="1" max="120">
         </div>
 
-        <div class="input-group" style="padding: 15px; background: #f4fbf4; border-radius: 16px; border: 2px solid var(--border-color);">
-            <label for="user-nickname"> 쪽지에 남길 귀여운 별명을 적어주세요 <span style="color:red;">*필수</span></label>
+        <div class="input-group">
+            <label for="user-nickname"> 쪽지에 남길 귀여운 별명을 적어주세요 <span style="color:#e74c3c;">*필수</span></label>
             <input type="text" id="user-nickname" class="text-input" placeholder="예: 코딩하는 니체">
         </div>
 
-        <div style="margin-top: 20px; padding: 20px; background: #fffdf2; border-radius: 20px; border: 2px solid #ebdcb1;">
-            <h4 style="margin: 0 0 5px 0; color: #826928; text-align: left; font-size: 15px;">🎁 이벤트 경품 수령 정보 (선택사항)</h4>
-            <p style="margin: 0 0 15px 0; font-size: 12px; color: #a1894a; line-height: 1.4;">추첨 상품 지급 목적용 정보입니다. 최고관리자만 통계 및 다운로드 확인이 가능합니다.</p>
+        <div style="margin-top: 25px; padding: 18px; background: #fffdf0; border-radius: 14px; border: 1px solid #e6db9c;">
+            <h4 style="margin: 0 0 6px 0; color: #7f6a22; text-align: left; font-size: 14px;">🎁 이벤트 경품 수령 정보 (선택사항)</h4>
+            <p style="margin: 0 0 12px 0; font-size: 12px; color: #8e7d43; line-height: 1.4;">추첨 상품 지급 목적용 정보입니다. 최고관리자만 식별이 가능합니다.</p>
             
-            <div class="input-group"><input type="text" id="user-realname" class="text-input" style="border-color:#ebdcb1;" placeholder="본명 (예: 김철수)"></div>
-            <div class="input-group"><input type="text" id="user-belong" class="text-input" style="border-color:#ebdcb1;" placeholder="상세 소속/학년 (예: 3학년 1반)"></div>
-            <div class="input-group"><input type="text" id="user-student-id" class="text-input" style="border-color:#ebdcb1;" placeholder="학번/사번 (예: 30102)"></div>
-            <div class="input-group"><input type="text" id="user-phone" class="text-input" style="border-color:#ebdcb1;" placeholder="전화번호 (예: 010-9999-8888)"></div>
+            <div class="input-group"><input type="text" id="user-realname" class="text-input" style="border-color:#e6db9c;" placeholder="본명 (예: 김철수)"></div>
+            <div class="input-group"><input type="text" id="user-belong" class="text-input" style="border-color:#e6db9c;" placeholder="상세 소속/학년 (예: 3학년 1반)"></div>
+            <div class="input-group"><input type="text" id="user-student-id" class="text-input" style="border-color:#e6db9c;" placeholder="학번/사번 (예: 30102)"></div>
+            <div class="input-group"><input type="text" id="user-phone" class="text-input" style="border-color:#e6db9c;" placeholder="전화번호 (예: 010-9999-8888)"></div>
         </div>
 
         <button class="btn" onclick="startQuiz()"> 철학적 성향 검사 시작하기</button>
-        <button class="btn" style="background-color: #ffffff; border: 2px solid var(--border-color); color: #6b9e7d; margin-top: 15px;" onclick="showForestOnly()">바로 차원의 숲 구경하기</button>
-        <button class="btn" style="background-color: #ffffff; border: 2px solid var(--border-color); color: #888; margin-top: 10px; max-width: 200px; padding: 8px 15px; font-size: 13px;" onclick="backToDimensionSelect()">처음 화면으로</button>
+        <button class="btn" style="background-color: #ffffff; border: 1.5px solid var(--border-color); color: #355e42; margin-top: 12px;" onclick="showForestOnly()">바로 차원의 숲 구경하기</button>
+        <button class="btn" style="background-color: #ffffff; border: 1.5px solid var(--border-color); color: #888; margin-top: 10px; max-width: 180px; padding: 10px; font-size: 13px;" onclick="backToDimensionSelect()">처음 화면으로</button>
     </div>
 
     <div id="screen-quiz" class="hidden">
@@ -195,29 +205,29 @@
     </div>
 
     <div id="screen-result-1" class="hidden">
-        <h3 style="color: #6b9e7d;">당신의 성향과 가장 가까운 사상가는?</h3>
+        <h3 style="color: #53775d; font-size: 16px;">당신의 성향과 가장 가까운 사상가는?</h3>
         <div class="philosopher-title" id="res-philosopher-name">철학자 이름</div>
-        <p style="font-weight: 900; text-align: center; color: var(--accent-color); font-size: 18px;" id="res-tree-group">소속 나무</p>
-        <div style="margin-top: 30px; background: #f9fdfa; padding: 20px; border-radius: 20px; border: 2px solid var(--border-color);">
-            <h4 style="color: #ff8c42; margin-top: 0;"> 그가 바라본 AI 시대:</h4>
-            <p id="res-ai-view" style="margin-bottom: 0;">AI 시대 분석 내용</p>
+        <p style="font-weight: 700; text-align: center; color: var(--accent-color); font-size: 16px; margin-top: 5px;" id="res-tree-group">소속 나무</p>
+        <div style="margin-top: 25px; background: #fafdfa; padding: 20px; border-radius: 16px; border: 1.5px solid var(--border-color);">
+            <h4 style="color: #e67e22; margin-top: 0; text-align: left;"> 그가 바라본 AI 시대:</h4>
+            <p id="res-ai-view" style="margin-bottom: 0; font-size: 15px;">AI 시대 분석 내용</p>
         </div>
         <button class="btn" onclick="goToScreen2()">나만의 새로운 질서 작성하기</button>
     </div>
 
     <div id="screen-result-2" class="hidden">
-        <h3 id="res-quote-title">사상가의 한마디</h3>
+        <h3 id="res-quote-title" style="font-size: 16px; color: #53775d;">사상가의 한마디</h3>
         <div class="quote-box" id="res-quote-text">"명언"</div>
-        <h3 style="margin-top: 40px; color: #1e3a26;">나만의 새로운 질서 수립 </h3>
+        <h3 style="margin-top: 35px; color: #112216; font-size: 18px;">나만의 새로운 질서 수립 </h3>
         
         <div class="input-group"><input type="text" id="pledge-1" class="text-input" placeholder="01. 비판 없이 AI 답변을 복사하지 않겠다. (필수)"></div>
         <div class="input-group"><input type="text" id="pledge-2" class="text-input" placeholder="02. 하루 30분 스마트폰을 끄고 사유하겠다. (선택)"></div>
         <div class="input-group"><input type="text" id="pledge-3" class="text-input" placeholder="03. (선택)"></div>
-        <button class="btn" style="background-color: #ff8c42;" onclick="submitToTree()">숲에 내 나무 심으러 가기 🌳</button>
+        <button class="btn" style="background-color: #e67e22; box-shadow: 0 4px 12px rgba(230,126,34,0.2);" onclick="submitToTree()">숲에 내 나무 심으러 가기 🌳</button>
     </div>
 
     <div id="screen-forest" class="hidden">
-        <h2 id="current-forest-master-title">로고스의 숲</h2>
+        <h2 id="current-forest-master-title" style="font-size: 20px;">로고스의 숲</h2>
         <div class="forest-split-grid">
             <div class="forest-card" onclick="openSpecificForest('실존과 인식의 나무')">
                 <div class="forest-card-icon">🌳</div><div class="forest-card-title">실존과 인식의 숲</div><div class="forest-card-count" id="summary-count-1">0 그루</div>
@@ -233,33 +243,35 @@
             </div>
         </div>
 
-        <button class="btn" style="background-color: #fee500; color: #3c1e1e; font-weight: 900;" onclick="shareMyResult()">💬 카카오톡으로 공간 공유하기</button>
-        <button class="btn" style="background-color: #ffffff; border: 2px solid var(--border-color); color: #6b9e7d;" onclick="backToDimensionSelect()">다른 차원으로 이동하기</button>
+        <button class="btn" style="background-color: #fee500; color: #3c1e1e; font-weight: 800; box-shadow: none;" onclick="shareMyResult()">💬 카카오톡으로 공간 공유하기</button>
+        <button class="btn" style="background-color: #ffffff; border: 1.5px solid var(--border-color); color: #53775d;" onclick="backToDimensionSelect()">다른 차원으로 이동하기</button>
         
         <button class="admin-trigger" onclick="adminLogin()">⚙️ 최고관리자 설정</button>
         <div style="clear: both;"></div>
 
         <div id="admin-panel" class="admin-dashboard">
             <h3>📊 최고관리자 통계 분석실</h3>
-            <div class="input-group" style="max-width:300px; margin:0 auto 20px auto;">
+            <div class="input-group" style="max-width:280px; margin:0 auto 20px auto;">
                 <label>데이터 통계 필터링 :</label>
                 <select id="admin-stat-filter" class="text-input" onchange="renderAdminDashboard()"></select>
             </div>
-            <p style="font-size:15px; text-align: right; color: #2d4a36; font-weight: bold;">집단 참여자 수: <strong id="admin-total" style="color:#ff8c42; font-size:20px;">0</strong> 명</p>
+            <p style="font-size:14px; text-align: right; color: var(--text-color); font-weight: 700;">집단 참여자 수: <strong id="admin-total" style="color:#e67e22; font-size:18px;">0</strong> 명</p>
             
             <div class="stat-section"><h4>🎯 연령 통계 분포</h4><div id="age-stats-container"></div></div>
-            <div class="stat-section" style="margin-top: 25px;"><h4>🌿 테마 숲별 분포 현황</h4><div id="tree-stats-container"></div></div>
-            <div class="stat-section" style="margin-top: 25px;"><h4>📖 사상가 매칭 Top 10</h4><div id="philo-stats-container"></div></div>
-            <button class="btn" style="background-color: #2d4a36; margin-top: 25px;" onclick="exportDataToCSV()">📥 개인정보 포함 CSV 다운로드</button>
+            <div class="stat-section" style="margin-top: 20px;"><h4>🌿 테마 숲별 분포 현황</h4><div id="tree-stats-container"></div></div>
+            <div class="stat-section" style="margin-top: 20px;"><h4>📖 사상가 매칭 Top 10</h4><div id="philo-stats-container"></div></div>
+            <button class="btn" style="background-color: #1e3525; margin-top: 20px;" onclick="exportDataToCSV()">📥 개인정보 포함 CSV 다운로드</button>
         </div>
     </div>
 
     <div id="screen-specific-forest" class="hidden">
-        <h2 id="specific-forest-title" style="color: var(--accent-color); font-size: 28px;">숲</h2>
-        <p id="specific-forest-desc" style="text-align: center; color: #6b9e7d; font-size: 14px; font-weight: bold; margin-bottom: 20px;"></p>
-        <div id="planting-instruction" class="instruction-box hidden">예쁜 빈 공간을 클릭해서 내 나무를 심어주세요!</div>
+        <h2 id="specific-forest-title" style="color: var(--accent-color); font-size: 24px; margin-bottom: 5px;">숲</h2>
+        <p id="specific-forest-desc" style="text-align: center; color: #53775d; font-size: 13px; font-weight: 700; margin-bottom: 20px;"></p>
+        <div id="planting-instruction" class="instruction-box hidden">🌳 주황색 박스 내부 빈 공간을 클릭하면 나무가 즉시 심어집니다!</div>
+        
         <div class="specific-forest-area" id="specific-tree-container" onclick="handleForestClick(event)"></div>
-        <button class="btn" style="background-color: #ffffff; border: 2px solid var(--border-color); color: #6b9e7d; margin-top: 25px;" onclick="backToForests()">⬅ 다른 숲으로 돌아가기</button>
+        
+        <button class="btn" style="background-color: #ffffff; border: 1.5px solid var(--border-color); color: #53775d; margin-top: 25px;" onclick="backToForests()">⬅ 다른 숲으로 돌아가기</button>
     </div>
 </div>
 
@@ -268,7 +280,7 @@
 </div>
 
 <script>
-    // 파이어베이스 v12 SDK 호환 세팅
+    // 파이어베이스 계정 세팅
     const firebaseConfig = {
         apiKey: "AIzaSyD7MUKBTxCRF_ottRYrE_v8ufb-u8hZZsI",
         authDomain: "genesis-5e058.firebaseapp.com",
@@ -281,19 +293,7 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    let globalDimensions = [];
-    let globalNotes = [];
-    let currentCategory = 'all'; 
-    let currentDimensionId = "";
-    let currentDimensionName = "";
-    let searchKeyword = "";
-
-    let activeQuizSet = [], currentQuizIndex = 0, scores = {};
-    let finalPhilosopher = "", userNickname = "", isAdmin = false;
-    let currentOpenForestName = ""; 
-    let pendingNote = null; 
-    let isPlantingMode = false; 
-
+    // 전역 사유 데이터 인프라 스트럭처
     const raw_db = {
         "르네 데카르트": { tree: "실존과 인식의 나무", quote: "나는 의심한다, 고로 존재한다.", view: "의심하고 회의하는 주체로 남으십시오.", q: ["AI가 취향을 저격할 때 '이게 진짜 내 생각일까?' 의심해 본다.", "챗GPT 답변이 완벽해도 진짜 '생각'은 아니라 느낀다.", "온라인 가상보다 현실의 내가 진짜다.", "질문을 던질 때 짜릿함을 느낀다.", "AI는 존재를 인식하지 못한다.", "무비판적 수용은 답답하다.", "정보는 의심부터 한다.", "의심하는 능력은 대체 불가하다.", "현실 세계가 더 중요하다.", "인간의 불완전한 사유가 더 가치 있다."] },
         "임마누엘 칸트": { tree: "실존과 인식의 나무", quote: "자율성이 없는 행동은 도덕이 아니다.", view: "도덕적 판단권까지 외주 주지 마십시오.", q: ["AI 실수도 내 책임이다.", "편리함보다 정직함이 중요하다.", "AI 편법은 거절한다.", "기계는 도덕적일 수 없다.", "피해를 주지 않는 기준이 있다.", "규칙을 끝까지 지킨다.", "사람을 목적으로 대한다.", "인간 도덕성 부재가 문제다.", "양심에 가책을 느끼면 AI를 쓰지 않는다.", "도덕적 중심이 필요하다."] },
@@ -303,7 +303,7 @@
         "프리드리히 니체": { tree: "실존과 인식의 나무", quote: "신은 죽었다. 초인이 되어라.", view: "AI가 주는 편안함을 거부하고 스스로 가치를 창조하십시오.", q: ["기술이 주는 안락함에 빠져 나태해지는 것을 경계한다.", "알고리즘이 길들인 수동적인 대중의 삶에서 벗어나고 싶다.", "나를 극복하고 더 나은 존재로 나아가려는 의지가 강하다.", "세상이 정해준 옳고 그름을 의심하고 나만의 가치를 세우려 한다.", "고난과 시련조차 기계에 피하지 않고 정면으로 마주하고 싶다.", "편안한 가상 세계보다는 고통스럽더라도 피 끓는 현실을 택하겠다.", "정해진 시스템에 순응하는 대신 시스템을 부수고 창조하고 싶다.", "위험을 감수하더라도 나만의 강렬한 삶의 목적을 추구한다.", "나의 욕망은 AI의 예측 데이터 따위로 축소될 수 없다.", "절대적인 진리나 시스템을 맹신하지 않고 스스로 삶의 주인이 된다."] },
         "마르틴 하이데거": { tree: "기술 사회 비판의 나무", quote: "기술의 지배 속에서 부품으로 전락하지 마라.", view: "디지털 시스템의 부품이 되지 마십시오.", q: ["기계가 일상을 처리할 때 나는 부품 같다.", "모든 것이 효율적 수단으로 취급된다.", "기술 지배가 걱정된다.", "고유한 인간성이 마모된다.", "사물을 깊이 보는 여유를 잃었다.", "존재 의미를 상실해 간다.", "스마트 기기가 없으면 위기감을 느낀다.", "기술이 사유를 개조한다.", "명상적 사유가 시급하다.", "주체성 지키기는 외로운 싸움이다."] },
         "장 보드리야르": { tree: "기술 사회 비판의 나무", quote: "가짜 현실이 진짜를 지배하는 시대, 영혼을 구출하라.", view: "매혹적인 가짜 세계에서 현실을 지키세요.", q: ["AI 필터 사진이 더 진짜 같다.", "딥페이크가 현실감 있다.", "가상 세계가 더 편안하다.", "원본과 복제 구분이 안 된다.", "가짜 이미지가 현실을 대체했다.", "가상 라이프를 동경한다.", "뉴스가 조작된 과도현실 같다.", "그래픽 자연이 더 완벽하다.", "먹방 이미지가 욕망을 자극한다.", "기술은 현실을 복제물로 채운다."] },
-        "미셸 푸코": { tree: "기술 사회 비판의 나무", quote: "권력은 지식이자 규율이다.", view: "데이터 감시 사회의 판옵티콘에서 벗어나십시오.", q: ["나의 모든 검색 기록이 누군가에게 감시당하고 있다는 느낌이 불쾌하다.", "알고리즘이 나의 행동을 특정한 방향으로 유도하고 통제한다고 생각한다.", "디지털 기기가 일상을 편리하게 해주기보다 나를 감시하는 규율처럼 느껴진다.", "SNS의 '좋아요' 시스템이 사람들을 일정한 기준에 맞추어 통제한다고 본다.", "데이터로 사람을 분류하고 등급을 매기는 사회 시스템에 저항감을 느낀다.", "기술 기업들이 쥐고 있는 정보력이 곧 억압적인 권력이라고 생각한다.", "보이지 않는 알고리즘의 잣대에 맞춰 내 행동을 스스로 검열한 적이 있다.", "사회의 보편적 기준이나 정상성에 얽매이지 않고 나만의 방식을 고수한다.", "스마트시티나 CCTV 확장이 안전보다는 통제를 위한 수단으로 보인다.", "기술 발전이 인간을 해방하기보다 오히려 더 교묘하게 길들인다고 본다."] },
+        "미셸 푸코": { tree: "기술 사회 비판의 나무", quote: "권력은 지식이자 규율이다.", view: "데이터 감시 사회의 판옵티콘에서 벗어나십시오.", q: ["나의 모든 검색 기록이 누군가에게 감시당하고 있다는 느낌이 불쾌하다.", "알고리즘이 나의 행동을 특정한 방향으로 유도하고 통제한다고 생각한다.", "디지털 기기가 일상을 편리하게 해주기보다 나를 감시하는 규율처럼 느껴진다.", "SNS의 '좋아요' 시스템이 사람들을 일정한 기준에 맞추어 통제한다고 본다.", "데이터로 사람을 분류하고 등급을 매기는 사회 시스템에 저항감을 느낀다.", "기술 기업들이 쥐고 있는 정보력이 곧 억압적인 권력이라고 생각한다.", "보이지 않는 알고리즘의 잣대에 맞춰 내 행동을 스스로 검열한 적이 있다.", "사회의 보편적 기준이나 정상성에 얽매이지 않고 나만의 방식을 고수한다.", "스마트시티나 CCTV 확장이 안전보다는 통제를 위한 수단으로 보인다.", "기술 발전이 인간 해방하기보다 오히려 더 교묘하게 길들인다고 본다."] },
         "한병철": { tree: "기술 사회 비판의 나무", quote: "우리는 스마트한 기기를 통해 스스로를 착취한다.", view: "끝없는 성과주의와 피로 사회의 디지털 늪을 경계하십시오.", q: ["항상 연결되어 있어야 한다는 압박감 때문에 피로를 자주 느낀다.", "SNS를 보며 타인의 성공과 나를 비교하느라 우울해질 때가 있다.", "휴식 시간조차 넷플릭스나 유튜브 등 콘텐츠 소비에 쫓기듯 사용한다.", "더 나은 성과를 내기 위해 수면이나 여가 시간을 줄여본 적이 있다.", "자기 계발의 압박감이 외부가 아닌 내 자신으로부터 온다고 느낀다.", "디지털 기기의 알람 소리에 조건반사적으로 반응하는 내 모습이 싫다.", "정보의 과잉이 오히려 깊이 있는 사색을 방해한다고 생각한다.", "'할 수 있다'는 긍정의 메시지가 때로는 독성처럼 느껴진다.", "아무것도 하지 않고 가만히 있는 시간을 견디기 어려워졌다.", "모든 것이 매끄럽고 긍정적인 디지털 환경이 어딘가 가짜 같다."] },
         "카를 마르크스": { tree: "기술 사회 비판의 나무", quote: "기술은 자본의 이윤을 위해 노동을 소외시킨다.", view: "AI 기술이 노동의 가치를 빼앗는 구조를 직시하십시오.", q: ["AI의 발전이 인류 전체보다는 소수 거대 기술 기업의 배만 불린다고 생각한다.", "기술이 인간의 노동 가치를 떨어뜨리고 기계의 부품으로 만든다고 느낀다.", "플랫폼 노동자나 배달원들이 알고리즘의 지시로 착취당하는 구조가 문제다.", "자동화로 인해 내 직업이나 기술이 언제든 대체될 수 있다는 불안감이 있다.", "우리가 생산한 데이터가 공짜로 자본의 이윤 창출에 쓰이는 것이 부당하다.", "기술 혁신보다 그 기술로 인한 부와 권력의 불평등 해소가 먼저다.", "아무리 기술이 발전해도 자본주의 시스템 안에서는 불평등이 심화될 것이다.", "개인의 능력 부족보다 사회적, 경제적 구조가 삶을 결정짓는 데 더 큰 영향을 미친다.", "디지털 소비에 중독되어 진짜 내 삶의 문제를 외면하고 있는 것은 아닌지 걱정된다.", "다 함께 이익을 나누는 공공의 목적을 위해 AI 기술이 통제되어야 한다."] },
         "발터 벤야민": { tree: "기술 사회 비판의 나무", quote: "아우라가 상실된 시대, 복제 기술은 지각을 바꾼다.", view: "무한 복제되는 디지털 콘텐츠 속에서 진정한 가치를 고민하십시오.", q: ["디지털로 무한 복제된 이미지보다 단 하나뿐인 원본 작품이 더 가치 있다.", "AI가 그린 그림이 아무리 화려해도 인간 작가가 남긴 손길의 흔적(아우라)은 없다.", "과거의 기억이나 역사가 디지털 데이터로 납작하게 기록되는 것이 아쉽다.", "스마트폰으로 모든 것을 찍어대면서 오히려 진짜 경험은 잃어버리는 것 같다.", "기술 복제가 예술을 대중화시킨 점은 좋지만, 작품의 신비로움은 사라졌다.", "인터넷에 넘쳐나는 정보들 속에서 진정성 있는 의미를 찾기 힘들다.", "과거 아날로그 시절의 물건이나 장소가 주는 독특한 분위기를 그리워한다.", "파편화된 디지털 텍스트보다 흐름이 있는 긴 호흡의 독서를 선호한다.", "모든 것이 빠르게 소비되고 버려지는 디지털 문화에 피로감을 느낀다.", "예술이나 사물에 깃든 고유한 역사성과 시간의 흔적을 중요하게 생각한다."] },
@@ -321,7 +321,21 @@
         "원효대사": { tree: "동양 사상의 나무", quote: "일체유심조(一切唯心造), 모든 것은 오직 마음이 지어낸다.", view: "가상현실도 결국 마음의 투영임을 깨달으십시오.", q: ["AI가 만든 가상 세계나 현실이나 결국 내 마음이 어떻게 받아들이냐에 달려 있다.", "기술이 주는 편리함이나 불안함 모두 내 내면의 투영일 뿐이다.", "디지털 세계의 화려한 이미지에 집착하지 않고 마음의 고요를 유지하려 한다.", "정보의 옳고 그름을 따지기 전에 내 마음의 중심이 잡혀 있는지 먼저 돌아본다.", "메타버스와 같은 가상 공간에서도 중요한 것은 사람을 향한 자비와 깨달음이다.", "기술의 발전이 인간을 구원하거나 파멸시키는 것이 아니라, 우리의 마음가짐이 결정한다.", "세상의 모든 데이터와 정보는 결국 허상이며, 집착할 필요가 없다고 느낀다.", "나와 기계, 나와 타인을 엄격하게 구분 짓는 분별심을 버리고자 한다.", "알고리즘의 시끄러운 유혹 속에서도 내 마음의 본성을 잃지 않을 자신이 있다.", "스마트폰을 들여다보는 대신 내 안의 평화를 들여다보는 명상의 시간이 소중하다."] }
     };
 
-    // 1. 차원 정보 리스너
+    // 데이터 싱크 변수
+    let globalDimensions = [];
+    let globalNotes = [];
+    let currentCategory = 'all'; 
+    let currentDimensionId = "";
+    let currentDimensionName = "";
+    let searchKeyword = "";
+
+    let activeQuizSet = [], currentQuizIndex = 0, scores = {};
+    let finalPhilosopher = "", userNickname = "", isAdmin = false;
+    let currentOpenForestName = ""; 
+    let pendingNote = null;      
+    let isPlantingMode = false;  
+
+    // 1. 차원 정보 실시간 연동
     db.collection("logos_dimensions").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
         globalDimensions = [];
         snapshot.forEach((doc) => {
@@ -335,7 +349,7 @@
         updateAdminFilterOptions();
     });
 
-    // 2. 나무 정보 리스너
+    // 2. 나무 쪽지 실시간 연동
     db.collection("logos_notes").onSnapshot((snapshot) => {
         globalNotes = []; 
         snapshot.forEach((doc) => {
@@ -365,11 +379,11 @@
 
         if (currentCategory === 'all') {
             html = `
-            <div style="padding: 30px 10px; text-align:center; background:#f9fdfa; border:2px solid var(--border-color); border-radius:20px;">
-                <span style="font-size:45px;">🌐</span>
-                <h3 style="margin: 15px 0 5px 0;">모두와 함께하는 광장 차원</h3>
-                <p style="color:#6b9e7d; font-size:14px; margin-bottom:20px;">비밀번호가 없는 공용 오픈 공간입니다.</p>
-                <button class="btn" onclick="selectDimension('PUBLIC_MAIN_SQUARE', '모두와 함께하는 광장')">광장 차원 즉시 진입</button>
+            <div style="padding: 25px 10px; text-align:center; background:#f0fbf4; border:1px solid var(--border-color); border-radius:16px;">
+                <span style="font-size:40px;">🌐</span>
+                <h3 style="margin: 12px 0 4px 0; font-size:16px;">모두와 함께하는 광장 차원</h3>
+                <p style="color:#53775d; font-size:13px; margin-bottom:15px;">누구나 진입할 수 있는 공유 사유 영역입니다.</p>
+                <button class="btn" style="margin-top:0;" onclick="selectDimension('PUBLIC_MAIN_SQUARE', '모두와 함께하는 광장')">광장 차원 진입하기</button>
             </div>`;
         } 
         else if (currentCategory === 'high' || currentCategory === 'univ') {
@@ -377,22 +391,22 @@
             let filteredDims = globalDimensions.filter(d => d.category === currentCategory);
 
             html = `
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                <h4 style="margin:0; font-size:15px; color:#4b7a59;">🏫 개설된 ${titleLabel} 커뮤니티 목록</h4>
-                <button style="background:var(--accent-color); color:white; border:none; padding:6px 12px; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="showCreateBox('${currentCategory}')">+ ${titleLabel} 추가</button>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <h4 style="margin:0; font-size:14px; color:#2d4c35;">🏫 개설된 ${titleLabel} 목록</h4>
+                <button style="background:var(--accent-color); color:white; border:none; padding:6px 12px; border-radius:8px; font-weight:700; cursor:pointer; font-size:12px;" onclick="showCreateBox('${currentCategory}')">+ 공간 추가</button>
             </div>
             <div id="dim-create-box" class="creation-box hidden"></div>
             <div class="dimension-list-container">`;
 
             if(filteredDims.length === 0) {
-                html += `<p style="text-align:center; color:#9abfa6; padding:20px;">등록된 공간이 없습니다.</p>`;
+                html += `<p style="text-align:center; color:#9abfa6; padding:20px; font-size:13px;">등록된 차원이 없습니다.</p>`;
             } else {
                 filteredDims.forEach(dim => {
                     let count = globalNotes.filter(n => n.dimensionId === dim.dimId).length;
                     html += `
                     <div class="dimension-item" onclick="handleDimensionEntry('${dim.dimId}')">
-                        <div style="font-weight:bold; color:#1e3a26;">🏫 ${dim.name} <span class="dim-badge badge-public">공개</span></div>
-                        <div style="display:flex; align-items:center; gap:8px;">
+                        <div style="font-weight:700; font-size:14px;">🏫 ${dim.name} <span class="dim-badge badge-public">공개</span></div>
+                        <div style="display:flex; align-items:center; gap:6px;">
                             <span class="dim-badge badge-count">${count}그루</span>
                             ${isAdmin ? `<button class="toggle-status-btn" onclick="deleteDimension('${dim.dimId}', event)">삭제</button>` : ''}
                         </div>
@@ -409,12 +423,12 @@
 
             html = `
             <div class="search-wrapper">
-                <input type="text" id="group-search" class="search-input" placeholder="모둠 또는 행성 이름 검색..." value="${searchKeyword}">
-                <button class="search-btn" onclick="executeGroupSearch()">🔍 검색</button>
+                <input type="text" id="group-search" class="search-input" placeholder="모둠 이름 검색..." value="${searchKeyword}">
+                <button class="search-btn" onclick="executeGroupSearch()">검색</button>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                <h4 style="margin:0; font-size:15px; color:#4b7a59;">🪐 개별 모둠 차원 행성계</h4>
-                <button style="background:#ff8c42; color:white; border:none; padding:6px 12px; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="showCreateBox('group')">+ 모둠 만들기</button>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <h4 style="margin:0; font-size:14px; color:#2d4c35;">🪐 개별 모둠 차원 행성</h4>
+                <button style="background:#e67e22; color:white; border:none; padding:6px 12px; border-radius:8px; font-weight:700; cursor:pointer; font-size:12px;" onclick="showCreateBox('group')">+ 모둠 추가</button>
             </div>
             <div id="dim-create-box" class="creation-box hidden"></div>
             <div class="dimension-list-container">`;
@@ -427,13 +441,12 @@
                 visibleGroupCount++;
                 let count = globalNotes.filter(n => n.dimensionId === dim.dimId).length;
                 let isPrivate = dim.status === '비공개';
-                
-                let statusBadge = isPrivate ? `<span class="dim-badge badge-private" style="font-size:11px; padding:2px 5px;">🔒 비공개</span>` : `<span class="dim-badge badge-public">공개</span>`;
+                let statusBadge = isPrivate ? `<span class="dim-badge badge-private">🔒 비공개</span>` : `<span class="dim-badge badge-public">공개</span>`;
                 
                 html += `
                 <div class="dimension-item" onclick="handleDimensionEntry('${dim.dimId}')">
-                    <div style="font-weight:bold; color:#1e3a26;">🪐 ${dim.name} ${statusBadge}</div>
-                    <div style="display:flex; align-items:center; gap:8px;">
+                    <div style="font-weight:700; font-size:14px;">🪐 ${dim.name} ${statusBadge}</div>
+                    <div style="display:flex; align-items:center; gap:6px;">
                         <span class="dim-badge badge-count">${count}그루</span>
                         ${isAdmin ? `<button class="toggle-status-btn" onclick="deleteDimension('${dim.dimId}', event)">삭제</button>` : ''}
                     </div>
@@ -441,7 +454,7 @@
             });
 
             if(visibleGroupCount === 0) {
-                html += `<p style="text-align:center; color:#9abfa6; padding:20px;">개설된 모둠 행성이 없습니다.</p>`;
+                html += `<p style="text-align:center; color:#9abfa6; padding:20px; font-size:13px;">개설된 모둠 차원이 없습니다.</p>`;
             }
             html += `</div>`;
         }
@@ -461,34 +474,34 @@
         if(type === 'high' || type === 'univ') {
             let labelText = type === 'high' ? "고등학교명" : "대학교명";
             box.innerHTML = `
-                <h4 style="margin:0 0 10px 0; text-align:left;">✨ 새로운 ${labelText} 추가</h4>
+                <h4 style="margin:0 0 10px 0; text-align:left; font-size:14px;">✨ ${labelText} 추가 생성</h4>
                 <div class="input-group">
                     <input type="text" id="input-new-name" class="text-input" placeholder="예: 대구고등학교">
                 </div>
-                <div style="display:flex; gap:10px; justify-content:flex-end;">
-                    <button class="toggle-status-btn" style="background:#888;" onclick="document.getElementById('dim-create-box').classList.add('hidden')">취소</button>
-                    <button class="toggle-status-btn" onclick="saveNewDimension('${type}', '공개')">확인 생성</button>
+                <div style="display:flex; gap:8px; justify-content:flex-end;">
+                    <button class="toggle-status-btn" style="background:#95a5a6;" onclick="document.getElementById('dim-create-box').classList.add('hidden')">취소</button>
+                    <button class="toggle-status-btn" onclick="saveNewDimension('${type}', '공개')">개설하기</button>
                 </div>`;
         } else if(type === 'group') {
             box.innerHTML = `
-                <h4 style="margin:0 0 10px 0; text-align:left;">✨ 개별 모둠 차원 행성 개설</h4>
+                <h4 style="margin:0 0 10px 0; text-align:left; font-size:14px;">✨ 개별 모둠 차원 행성 개설</h4>
                 <div class="input-group">
-                    <input type="text" id="input-new-name" class="text-input" placeholder="모둠 또는 주제 이름">
+                    <input type="text" id="input-new-name" class="text-input" placeholder="모둠 또는 주제 지정">
                 </div>
                 <div class="input-group">
-                    <label>공개 타입설정 :</label>
-                    <select id="input-new-status" class="text-input" style="padding:10px;" onchange="togglePasswordInputDisplay(this.value)">
-                        <option value="공개">전체 공개 행성</option>
-                        <option value="비공개">비공개 행성 (비밀번호 설정)</option>
+                    <label>공개 보안 속성 선택:</label>
+                    <select id="input-new-status" class="text-input" onchange="togglePasswordInputDisplay(this.value)">
+                        <option value="공개">전체 오픈 행성 (모두 공개)</option>
+                        <option value="비공개">비공개 비밀 행성 (암호 입력 필수)</option>
                     </select>
                 </div>
                 <div class="input-group hidden" id="pw-input-wrapper">
-                    <label style="color:#c94a4a;">🔒 입장 비밀번호 설정 :</label>
-                    <input type="password" id="input-new-password" class="text-input" placeholder="입장 시 입력할 암호">
+                    <label style="color:#c0392b;">🔒 접근 제어 비밀번호 설정:</label>
+                    <input type="password" id="input-new-password" class="text-input" placeholder="진입에 사용될 암호 입력">
                 </div>
-                <div style="display:flex; gap:10px; justify-content:flex-end;">
-                    <button class="toggle-status-btn" style="background:#888;" onclick="document.getElementById('dim-create-box').classList.add('hidden')">취소</button>
-                    <button class="toggle-status-btn" style="background:#ff8c42;" onclick="saveNewDimension('group', null)">행성 창조</button>
+                <div style="display:flex; gap:8px; justify-content:flex-end;">
+                    <button class="toggle-status-btn" style="background:#95a5a6;" onclick="document.getElementById('dim-create-box').classList.add('hidden')">취소</button>
+                    <button class="toggle-status-btn" style="background:#e67e22;" onclick="saveNewDimension('group', null)">행성 생성</button>
                 </div>`;
         }
     }
@@ -504,10 +517,10 @@
         let status = forceStatus || document.getElementById('input-new-status').value;
         let password = "";
 
-        if(!name) return alert("이름을 입력해주세요!");
+        if(!name) return alert("공간 명칭을 작성해주세요!");
         if(status === '비공개') {
             password = document.getElementById('input-new-password').value.trim();
-            if(!password) return alert("비공개 차원은 접근 제한 비밀번호가 필수입니다!");
+            if(!password) return alert("비공개 공간은 진입 암호가 필수입니다!");
         }
 
         db.collection("logos_dimensions").add({
@@ -517,10 +530,10 @@
             password: password,
             timestamp: Date.now()
         }).then(() => {
-            alert(`'${name}' 공간 차원이 정상적으로 생성되었습니다.`);
+            alert(`'${name}' 공간 차원이 생성되었습니다.`);
             document.getElementById('dim-create-box').classList.add('hidden');
             renderCurrentCategoryUI();
-        }).catch(err => alert("생성 오류: " + err.message));
+        }).catch(err => alert("오류 발생: " + err.message));
     }
 
     function handleDimensionEntry(dimId) {
@@ -528,9 +541,9 @@
         if(!dim) return;
 
         if(dim.status === '비공개' && !isAdmin) {
-            let userCryptoInput = prompt("🔒 비공개 차원입니다.\n입장 비밀번호를 입력하세요:");
+            let userCryptoInput = prompt("🔒 비공개 암호화 처리된 차원입니다.\n진입 패스워드를 기입하십시오:");
             if (userCryptoInput !== dim.password) {
-                return alert("암호가 일치하지 않습니다.");
+                return alert("암호가 맞지 않습니다.");
             }
         }
         selectDimension(dimId, dim.name);
@@ -549,10 +562,10 @@
         let nickInput = document.getElementById('user-nickname').value.trim();
         
         if (!ageInput || isNaN(ageInput) || parseInt(ageInput) <= 0) {
-            return alert("통계 분석을 위해 필수 사항인 정확한 연령을 기입해 주세요.");
+            return alert("연령 정보가 누락되었거나 양식이 맞지 않습니다.");
         }
         if (!nickInput) {
-            return alert("별명을 입력해주세요!");
+            return alert("필칭(닉네임)을 작성해주세요.");
         }
         userNickname = nickInput;
         
@@ -581,9 +594,15 @@
         showQuestion();
     }
 
+    // [중요 수정] 오타를 완벽히 걷어낸 깔끔한 계산 로직
     function calculateResult() {
         let max = -1;
-        for (let name in scores) { if(scores[name] > max) { max = scores[name]; finalPhilosopher = name; } }
+        for (let name in scores) { 
+            if(scores[name] > max) { 
+                max = scores[name]; 
+                finalPhilosopher = name; 
+            } 
+        }
         const data = raw_db[finalPhilosopher];
         document.getElementById('res-philosopher-name').innerText = finalPhilosopher;
         document.getElementById('res-tree-group').innerText = `소속: [${data.tree}]`;
@@ -593,7 +612,7 @@
     }
 
     function goToScreen2() {
-        document.getElementById('res-quote-title').innerText = `${finalPhilosopher}의 문장`;
+        document.getElementById('res-quote-title').innerText = `${finalPhilosopher}의 격언`;
         document.getElementById('res-quote-text').innerText = `"${raw_db[finalPhilosopher].quote}"`;
         document.getElementById('screen-result-1').classList.add('hidden');
         document.getElementById('screen-result-2').classList.remove('hidden');
@@ -603,14 +622,14 @@
         let p1 = document.getElementById('pledge-1').value.trim();
         let p2 = document.getElementById('pledge-2').value.trim();
         let p3 = document.getElementById('pledge-3').value.trim();
-        if(!p1) return alert("최소 01번 질서는 필수입니다!");
+        
+        if(!p1) return alert("첫 번째 행동 수칙 질서는 필수 요소입니다.");
 
-        // 나무 오브젝트 데이터 패키징 연동 안정화
         pendingNote = { 
             id: Date.now(), 
             dimensionId: currentDimensionId || "PUBLIC_MAIN_SQUARE",
             dimensionName: currentDimensionName || "모두와 함께하는 광장",
-            nickname: userNickname,
+            nickname: userNickname || "익명의 사유자",
             philosopher: finalPhilosopher, 
             tree: raw_db[finalPhilosopher].tree, 
             p1: p1, p2: p2, p3: p3,
@@ -627,7 +646,7 @@
     }
 
     function renderForestSelection() {
-        document.getElementById('current-forest-master-title').innerText = `🌿 [${currentDimensionName}]의 숲`;
+        document.getElementById('current-forest-master-title').innerText = `🌿 [${currentDimensionName}]의 대지`;
         let filtered = globalNotes.filter(n => n.dimensionId === currentDimensionId);
         let counts = {"실존과 인식의 나무":0, "기술 사회 비판의 나무":0, "포스트휴먼의 나무":0, "동양 사상의 나무":0};
         filtered.forEach(n => counts[n.tree] = (counts[n.tree] || 0) + 1);
@@ -644,17 +663,23 @@
         currentOpenForestName = treeName;
         let filteredNotes = globalNotes.filter(n => n.tree === treeName && n.dimensionId === currentDimensionId);
         document.getElementById('specific-forest-title').innerText = treeName.replace('나무', '숲');
+        
         let container = document.getElementById('specific-tree-container');
         
-        if (treeName === "실존과 인식의 나무") container.style.backgroundColor = "#a3e6a9"; 
-        else if (treeName === "기술 사회 비판의 나무") container.style.backgroundColor = "#92a690"; 
-        else if (treeName === "포스트휴먼의 나무") container.style.backgroundColor = "#76ded3"; 
-        else if (treeName === "동양 사상의 나무") container.style.backgroundColor = "#dfe889";
+        const forestBgColors = {
+            "실존과 인식의 나무": "#d5f3da",
+            "기술 사회 비판의 나무": "#cad4c5",
+            "포스트휴먼의 나무": "#ccf5f1",
+            "동양 사상의 나무": "#f5f7cf"
+        };
+        container.style.backgroundColor = forestBgColors[treeName] || "#ffffff";
 
+        // 기존 나무들에 onclick 이벤트를 정상적으로 부착하여 관람 모드 시 클릭 가능하게 설정
         let htmlStr = "";
         filteredNotes.forEach(n => {
             let posX = n.x !== undefined ? n.x : Math.floor(Math.random() * 80 + 10);
             let posY = n.y !== undefined ? n.y : Math.floor(Math.random() * 80 + 10);
+            
             htmlStr += `
             <div class="tree-node-absolute" style="left: ${posX}%; top: ${posY}%;" onclick="openNoteModal(${n.id}, event)">
                 <span class="tree-icon">🌳</span>
@@ -663,6 +688,7 @@
         });
         container.innerHTML = htmlStr;
 
+        // 심기 모드 UI 전환
         if (isPlantingMode) {
             document.getElementById('planting-instruction').classList.remove('hidden');
             container.classList.add('planting-mode');
@@ -674,29 +700,42 @@
         document.getElementById('screen-specific-forest').classList.remove('hidden');
     }
 
-    // [핵심 해결] 캔버스 마우스 클릭 좌표 연산 및 나무 심기 완벽 작동 트리거
-    function handleForestClick(e) {
+    /**
+     * ====================================================================
+     * [최종 클릭 방어 로직] 심기 모드 시 절대 여백 및 방해물 오차 발생 불가
+     * ====================================================================
+     */
+    function handleForestClick(event) {
         if (!isPlantingMode || !pendingNote) return;
-        let container = e.currentTarget;
-        let rect = container.getBoundingClientRect();
+
+        const container = document.getElementById('specific-tree-container');
+        const rect = container.getBoundingClientRect();
         
-        // 브라우저 크기나 해상도에 영향받지 않도록 백분율 비율 연산 고정
-        let x = ((e.clientX - rect.left) / rect.width) * 100;
-        let y = ((e.clientY - rect.top) / rect.height) * 100;
+        let computedX = event.clientX - rect.left;
+        let computedY = event.clientY - rect.top;
 
-        pendingNote.x = x.toFixed(2);
-        pendingNote.y = y.toFixed(2);
+        let finalPercentX = (computedX / rect.width) * 100;
+        let finalPercentY = (computedY / rect.height) * 100;
 
-        // 파이어베이스 데이터베이스 전송
+        // 마우스가 컨테이너 경계선 바깥(음수 및 100% 초과)을 클릭했다면 무조건 무시
+        if (finalPercentX <= 0 || finalPercentX >= 100 || finalPercentY <= 0 || finalPercentY >= 100) {
+            return; 
+        }
+
+        pendingNote.x = finalPercentX.toFixed(2);
+        pendingNote.y = finalPercentY.toFixed(2);
+
+        // 파이어베이스 최종 저장
         db.collection("logos_notes").add(pendingNote).then(() => {
-            pendingNote = null; isPlantingMode = false;
+            pendingNote = null; 
+            isPlantingMode = false;
             alert("나만의 사유 나무를 정상적으로 심었습니다! 🌳");
             openSpecificForest(currentOpenForestName); 
         }).catch(err => alert("나무 기록 오류: " + err.message));
     }
 
     function backToForests() {
-        if(isPlantingMode) return alert("먼저 빈 곳을 클릭해 나무를 심어주세요!");
+        if(isPlantingMode) return alert("주황색 배너 모드가 켜진 상태입니다.\n박스 내부 빈 곳을 터치하여 나무를 마저 심어주세요!");
         document.getElementById('screen-specific-forest').classList.add('hidden');
         document.getElementById('screen-forest').classList.remove('hidden');
         renderForestSelection();
@@ -716,14 +755,14 @@
         let modalBody = "";
         if (isAdmin) modalBody += `<button class="delete-btn" onclick="deleteNote(${note.id})">삭제</button>`;
         modalBody += `<div class="note-header">[${note.nickname || '익명'}] 님의 쪽지</div>`;
-        modalBody += `<div style="font-size:13px; color:#857538; margin-bottom:12px;"><strong>동기화 사상가:</strong> ${note.philosopher}</div>`;
-        modalBody += `<div style="color:#4a3e20; font-weight:bold; font-size: 16px;">1. ${note.p1}<br>`;
+        modalBody += `<div style="font-size:13px; color:#6b8e76; margin-bottom:12px;"><strong>동기화 사상가:</strong> ${note.philosopher}</div>`;
+        modalBody += `<div style="color:#3a321a; font-weight:700; font-size: 15px;">1. ${note.p1}<br>`;
         if(note.p2) modalBody += `2. ${note.p2}<br>`;
         if(note.p3) modalBody += `3. ${note.p3}<br>`;
         modalBody += `</div>`;
         
         if(isAdmin) {
-            modalBody += `<div style="margin-top:15px; padding:10px; background:#f0f0f0; border-radius:10px; font-size:12px; text-align:left;">`;
+            modalBody += `<div style="margin-top:15px; padding:10px; background:#f5f5f5; border-radius:10px; font-size:12px; text-align:left; color:#333;">`;
             modalBody += `🔒 <strong>최고관리자 비공개 열람 정보</strong><br>`;
             modalBody += `• 나이: ${note.age}세 | 본명: ${note.realname}<br>• 소속: ${note.belong} | 학번: ${note.studentId}<br>• 연락처: ${note.phone}</div>`;
         }
@@ -778,7 +817,7 @@
         document.getElementById('admin-total').innerText = total;
 
         if(total === 0) {
-            document.getElementById('age-stats-container').innerHTML = "<p>데이터가 존재하지 않습니다.</p>";
+            document.getElementById('age-stats-container').innerHTML = "<p style='font-size:13px; color:#95a5a6;'>데이터가 존재하지 않습니다.</p>";
             return;
         }
 
@@ -845,7 +884,6 @@
         document.body.appendChild(link); link.click(); document.body.removeChild(link);
     }
     
-    // 앱 가시성 레이어 마스터 리셋 함수
     function initApp() {
         document.getElementById('screen-dimension-select').classList.remove('hidden');
         document.getElementById('screen-start').classList.add('hidden');
