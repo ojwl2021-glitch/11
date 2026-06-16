@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logos Nexus — 새로운 질서의 확립</title>
     
-    <script src="https://www.gstatic.com/firebasejs/12.14.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
 
     <style>
         :root {
@@ -90,7 +90,6 @@
         .forest-card-title { font-size: 16px; font-weight: 800; color: #27ae60; margin-bottom: 4px; }
         .forest-card-count { font-size: 13px; color: #53775d; font-weight: 700; }
 
-        /* 특정 테마 숲 전용 캔버스 영역 */
         .specific-forest-area { position: relative; width: 100%; height: 450px; border: 2px solid var(--border-color); border-radius: 20px; overflow: hidden; margin-top: 15px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05); }
         
         .tree-node-absolute { position: absolute; transform: translate(-50%, -100%); text-align: center; cursor: pointer; transition: transform 0.2s; z-index: 10; }
@@ -99,11 +98,9 @@
         .tree-icon { font-size: 40px; display: block; filter: drop-shadow(0px 3px 3px rgba(0,0,0,0.15)); pointer-events: none; }
         .tree-name { font-size: 11px; font-weight: 800; color: #ffffff; background: #2f5238; padding: 3px 8px; border-radius: 10px; white-space: nowrap; margin-top: -2px; border: 1.5px solid #ffffff; pointer-events: none; }
 
-        /* 심기 모드일 때: 기존 나무들을 무시하여 빈 공간 클릭이 완벽하게 되도록 강제 처리 */
         .planting-mode { border: 3px dashed #e67e22 !important; cursor: crosshair !important; }
         .planting-mode .tree-node-absolute { pointer-events: none !important; }
 
-        /* 애니메이션 완전히 제거한 깔끔한 안내창 */
         .instruction-box { background-color: #e67e22; color: white; padding: 13px; text-align: center; border-radius: 12px; font-weight: 700; font-size: 15px; margin-bottom: 15px; }
 
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 34, 22, 0.5); display: flex; justify-content: center; align-items: center; z-index: 999; backdrop-filter: blur(3px); }
@@ -280,6 +277,7 @@
 </div>
 
 <script>
+    // 복사해주신 공식 Firebase 정보 양식에 맞추어 변수 초기화 방식 수정 완료
     const firebaseConfig = {
         apiKey: "AIzaSyD7MUKBTxCRF_ottRYrE_v8ufb-u8hZZsI",
         authDomain: "genesis-5e058.firebaseapp.com",
@@ -306,7 +304,7 @@
         "카를 마르크스": { tree: "기술 사회 비판의 나무", quote: "기술은 자본의 이윤을 위해 노동을 소외시킨다.", view: "AI 기술이 노동의 가치를 빼앗는 구조를 직시하십시오.", q: ["AI의 발전이 인류 전체보다는 소수 거대 기술 기업의 배만 불린다고 생각한다.", "기술이 인간의 노동 가치를 떨어뜨리고 기계의 부품으로 만든다고 느낀다.", "플랫폼 노동자나 배달원들이 알고리즘의 지시로 착취당하는 구조가 문제다.", "자동화로 인해 내 직업이나 기술이 언제든 대체될 수 있다는 불안감이 있다.", "우리가 생산한 데이터가 공짜로 자본의 이윤 창출에 쓰이는 것이 부당하다.", "기술 혁신보다 그 기술로 인한 부와 권력의 불평등 해소가 먼저다.", "아무리 기술이 발전해도 자본주의 시스템 안에서는 불평등이 심화될 것이다.", "개인의 능력 부족보다 사회적, 경제적 구조가 삶을 결정짓는 데 더 큰 영향을 미친다.", "디지털 소비에 중독되어 진짜 내 삶의 문제를 외면하고 있는 것은 아닌지 걱정된다.", "다 함께 이익을 나누는 공공의 목적을 위해 AI 기술이 통제되어야 한다."] },
         "발터 벤야민": { tree: "기술 사회 비판의 나무", quote: "아우라가 상실된 시대, 복제 기술은 지각을 바꾼다.", view: "무한 복제되는 디지털 콘텐츠 속에서 진정한 가치를 고민하십시오.", q: ["디지털로 무한 복제된 이미지보다 단 하나뿐인 원본 작품이 더 가치 있다.", "AI가 그린 그림이 아무리 화려해도 인간 작가가 남긴 손길의 흔적(아우라)은 없다.", "과거의 기억이나 역사가 디지털 데이터로 납작하게 기록되는 것이 아쉽다.", "스마트폰으로 모든 것을 찍어대면서 오히려 진짜 경험은 잃어버리는 것 같다.", "기술 복제가 예술을 대중화시킨 점은 좋지만, 작품의 신비로움은 사라졌다.", "인터넷에 넘쳐나는 정보들 속에서 진정성 있는 의미를 찾기 힘들다.", "과거 아날로그 시절의 물건이나 장소가 주는 독특한 분위기를 그리워한다.", "파편화된 디지털 텍스트보다 흐름이 있는 긴 호흡의 독서를 선호한다.", "모든 것이 빠르게 소비되고 버려지는 디지털 문화에 피로감을 느낀다.", "예술이나 사물에 깃든 고유한 역사성과 시간의 흔적을 중요하게 생각한다."] },
         "위르겐 하버마스": { tree: "기술 사회 비판의 나무", quote: "합리적 의사소통이 공론장을 살린다.", view: "에코체임버와 가짜뉴스를 넘어 이성적 대화를 복원하십시오.", q: ["알고리즘이 내 취향에 맞는 정보만 보여주는 '필터 버블' 현상이 우려된다.", "온라인에서 감정적인 혐오 표현보다 논리적이고 합리적인 토론이 필요하다.", "의견이 다른 사람들과도 배척하지 않고 건강하게 대화할 수 있다고 믿는다.", "가짜뉴스와 조작된 정보가 민주주의를 심각하게 위협한다고 생각한다.", "소셜 미디어가 공공의 문제를 논의하는 건전한 공론장 역할을 잃어가고 있다.", "나와 반대되는 정치적, 사회적 의견을 일부러 찾아 읽으려고 노력한다.", "기술 기업의 자의적 판단이 아니라 시민들의 합의로 AI 윤리가 정해져야 한다.", "진실은 권력이나 알고리즘이 아니라 상호 이해와 토론을 통해 도출된다.", "익명성 뒤에 숨어 무책임하게 비난하는 문화를 비판적으로 본다.", "디지털 시대에도 이성을 기반으로 한 의사소통이 사회적 갈등을 해결할 수 있다."] },
-        "쇼샤나 주보프": { tree: "기술 사회 비판의 나무", quote: "우리의 경험이 감시 자본주의의 무료 원료가 되었다.", view: "개인정보를 탐내는 플랫폼 자본주의에 저항하십시오.", q: ["무료 앱을 사용하는 대가로 내 개인정보가 수집되는 것에 강한 거부감을 느낀다.", "맞춤형 광고를 보면 내 삶이 데이터로 팔려나간 것 같아 섬뜩하다.", "나의 행동이나 감정 상태를 예측하고 조종하려는 기술적 시도를 경계한다.", "스마트 기기들이 편리함을 핑계로 내 일거수일투족을 엿보고 있다고 생각한다.", "거대 IT 기업들이 내 데이터를 독점하고 이익을 챙기는 구조는 부당하다.", "약관에 무심코 동의하는 관행이 인간의 경험을 자본화하는 수단이라고 본다.", "나의 사적인 공간과 시간만큼은 절대 디지털 네트워크에 연결하고 싶지 않다.", "내 데이터에 대한 통제권과 주권은 철저하게 나 자신에게 있어야 한다.", "알고리즘의 예측을 빗나가는 예측 불가능한 행동을 가끔 의도적으로 하고 싶다.", "미래의 자본주의는 상품이 아니라 우리의 행동 자체를 거래할 것이라 우려한다."] },
+        "쇼샤나 주보프": { tree: "기술 사회 비판의 나무", quote: "우리의 경험이 감시 자본주의의 무료 원료가 되었다.", view: "개인정보를 탐내는 플랫폼 자본주의에 저항하십시오.", q: ["개인적인 데이터를 넘기는 무료 서비스 사용에 거부감을 느낀다.", "맞춤형 광고를 보면 내 삶이 데이터로 팔려나간 것 같아 섬뜩하다.", "나의 행동이나 감정 상태를 예측하고 조종하려는 기술적 시도를 경계한다.", "스마트 기기들이 편리함을 핑계로 내 일거수일투족을 엿보고 있다고 생각한다.", "거대 IT 기업들이 내 데이터를 독점하고 이익을 챙기는 구조는 부당하다.", "약관에 무심코 동의하는 관행이 인간의 경험을 자본화하는 수단이라고 본다.", "나의 사적인 공간과 시간만큼은 절대 디지털 네트워크에 연결하고 싶지 않다.", "내 데이터에 대한 통제권과 주권은 철저하게 나 자신에게 있어야 한다.", "알고리즘의 예측을 빗나가는 예측 불가능한 행동을 가끔 의도적으로 하고 싶다.", "미래의 자본주의는 상품이 아니라 우리의 행동 자체를 거래할 것이라 우려한다."] },
         "한나 아렌트": { tree: "기술 사회 비판의 나무", quote: "사유하지 않음은 악의 평범성이다.", view: "알고리즘에 판단을 맡기지 말고 치열하게 사유하십시오.", q: ["AI나 시스템이 내린 결정을 아무런 비판 없이 맹목적으로 따르는 것은 위험하다.", "정해진 규칙이나 알고리즘대로만 행동하다 보면 인간성을 잃게 될 것이다.", "다수가 동의하거나 기술이 옳다고 증명해도, 스스로 사유하고 질문해야 한다.", "편리함을 이유로 나의 도덕적 판단을 기계에 외주 주는 것을 단호히 거부한다.", "악은 특별한 괴물이 아니라 사유하기를 포기한 평범한 사람들에게서 나온다.", "공공의 문제에 대해 무관심으로 일관하는 것은 민주주의에 대한 직무 유기다.", "타인의 입장에서 생각하고 공감하는 능력은 기계가 결코 흉내 낼 수 없다.", "시스템의 부속품처럼 수동적으로 살기보다 나의 행동에 온전한 책임을 지겠다.", "AI 시대일수록 인간은 정치적으로 참여하고 목소리를 내야 한다.", "어떤 정보든 '왜?'라는 근원적인 질문을 던지는 습관을 지키려고 노력한다."] },
         "도나 해러웨이": { tree: "포스트휴먼의 나무", quote: "우리는 이미 기계와 융합된 사이보그다.", view: "기계와의 유기적 융합을 통해 새로운 정체성을 찾습니다.", q: ["인간과 기계 경계는 무의미하다.", "기술과 결합한 상태가 자연스럽다.", "혼종 존재가 차별을 깬다.", "내 지식 절반은 인터넷에 있다.", "온라인에서 정체성을 재구성해봤다.", "기계는 내 신체를 확장하는 동반자다.", "경계를 허물 때 새 정치가 열린다.", "AI 툴과 경계 없이 협업한다.", "순수한 인간성 개념에 도전한다.", "나는 주체적인 사이보그다."] },
         "레이 커즈와일": { tree: "포스트휴먼의 나무", quote: "초지능은 인류의 파멸이 아니라 진화다.", view: "신인류로 거듭나는 시대를 긍정합니다.", q: ["뇌를 업로드해 영원히 사는 기술에 찬성한다.", "육체 한계를 넘는 건 필연이다.", "기술적 특이점이 기대된다.", "나노 로봇 도입을 긍정한다.", "인간 수명 한계는 정복 대상이다.", "초지능 대두는 의식의 확장이다.", "혁신 기술을 내 몸에 제일 먼저 쓰겠다.", "인간 상상력은 기하급수 성장 앞에 느리다.", "기계와 정신의 융합이 유토피아다.", "최신 과학 뉴스를 보면 가슴 웅장해진다."] },
@@ -332,6 +330,7 @@
     let pendingNote = null;      
     let isPlantingMode = false;  
 
+    // 실시간 연동 리스너 작동 (모든 기기 실시간 동기화)
     db.collection("logos_dimensions").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
         globalDimensions = [];
         snapshot.forEach((doc) => {
@@ -368,7 +367,6 @@
         renderCurrentCategoryUI();
     }
 
-    // ★ 핵심 수정 영역: 첫 화면(all 탭)에서 모든 기기에 개설된 차원을 강제로 동기화하여 시각화함
     function renderCurrentCategoryUI() {
         const targetArea = document.getElementById('tab-content-area');
         let html = "";
@@ -379,7 +377,7 @@
                 <span style="font-size:40px;">🌐</span>
                 <h3 style="margin: 12px 0 4px 0; font-size:16px;">모두와 함께하는 광장 차원</h3>
                 <p style="color:#53775d; font-size:13px; margin-bottom:15px;">누구나 진입할 수 있는 공유 사유 영역입니다.</p>
-                <button class="btn" style="margin-top:0;" onclick="selectDimension('PUBLIC_MAIN_SQUARE', '모두와 함께하는 광장')">광장 차원 진입하기</button>
+                <button class="btn" style="margin-top:0;" onclick="handleDimensionEntry('PUBLIC_MAIN_SQUARE')">광장 차원 진입하기</button>
             </div>
             
             <h4 style="text-align:left; font-size:14px; color:#2d4c35; margin: 25px 0 10px 0;">🌍 전체 개설된 차원 목록 (실시간 서버 동기화)</h4>
@@ -453,7 +451,6 @@
             <div id="dim-create-box" class="creation-box hidden"></div>
             <div class="dimension-list-container">`;
 
-            // ★ 핵심 수정 영역: 비공개 방일지라도 표면적으로 강제 파기해 숨겨버리는 소스를 제거해 무조건 노출시킴
             let visibleGroupCount = 0;
             filteredDims.forEach(dim => {
                 visibleGroupCount++;
@@ -555,13 +552,13 @@
     }
 
     function handleDimensionEntry(dimId) {
-        let dim = globalDimensions.find(d => d.dimId === dimId);
-        if(!dim) {
-            if(dimId === 'PUBLIC_MAIN_SQUARE') {
-                selectDimension('PUBLIC_MAIN_SQUARE', '모두와 함께하는 광장');
-            }
+        if(dimId === 'PUBLIC_MAIN_SQUARE') {
+            selectDimension('PUBLIC_MAIN_SQUARE', '모두와 함께하는 광장');
             return;
         }
+
+        let dim = globalDimensions.find(d => d.dimId === dimId);
+        if(!dim) return;
 
         if(dim.status === '비공개' && !isAdmin) {
             let userCryptoInput = prompt("🔒 비공개 암호화 처리된 차원입니다.\n진입 패스워드를 기입하십시오:");
@@ -572,7 +569,6 @@
         selectDimension(dimId, dim.name);
     }
 
-    // ★ 수정 및 결합 부분: 새로고침 방어를 위한 기기 내 localstorage 연동 보완
     function selectDimension(dimId, dimName) {
         currentDimensionId = dimId;
         currentDimensionName = dimName;
@@ -767,10 +763,17 @@
         
         alert("나만의 사유 나무를 정상적으로 심었습니다! 🌳");
 
-        db.collection("logos_notes").add(noteToSave).catch(err => {
-            console.error("Firebase 에러: ", err.message);
+        // 구버전 호환 양식(compat) 구조에 맞게 연동 구문 최적화 (서버 강제 업로드)
+        db.collection("logos_notes").add(noteToSave)
+        .then(() => {
+            console.log("Firebase 서버에 쪽지 저장 완료!");
+        })
+        .catch(err => {
+            console.error("Firebase 서버 전송 실패: ", err.message);
+            alert("서버 전송 중 에러가 발생했습니다. 파이어베이스 보안 규칙을 확인하세요.");
         });
 
+        // 실시간 로컬 메모리 반영 보장
         globalNotes.push(noteToSave);
         openSpecificForest(currentOpenForestName);
     }
@@ -815,7 +818,6 @@
 
     function closeNoteModal() { document.getElementById('note-modal-layout').classList.add('hidden'); }
     
-    // ★ 수정 및 결합 부분: 임의 퇴장 시 기록 삭제 연동
     function backToDimensionSelect() {
         localStorage.removeItem("currentDimId");
         localStorage.removeItem("currentDimName");
@@ -826,7 +828,6 @@
         renderCurrentCategoryUI();
     }
 
-    // ★ 수정 및 결합 부분: Web Share API를 적용한 링크 공유 기능
     function shareMyResult() {
         const shareData = {
             title: 'Logos Nexus — 새로운 질서의 확립',
@@ -955,7 +956,6 @@
         document.body.appendChild(link); link.click(); document.body.removeChild(link);
     }
     
-    // ★ 수정 및 결합 부분: 새로고침 방어를 위한 복구 제어자 보강
     function initApp() {
         document.getElementById('screen-dimension-select').classList.add('hidden');
         document.getElementById('screen-start').classList.add('hidden');
