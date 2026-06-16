@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logos Nexus — 새로운 질서의 확립</title>
     
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
     <style>
         :root {
@@ -277,6 +277,7 @@
 </div>
 
 <script>
+    // ⚠️ Firebase V8 엔진 초기화
     const firebaseConfig = {
         apiKey: "AIzaSyD7MUKBTxCRF_ottRYrE_v8ufb-u8hZZsI",
         authDomain: "genesis-5e058.firebaseapp.com",
@@ -286,8 +287,19 @@
         appId: "1:291005066199:web:82000f841ddd3c85997992"
     };
 
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
     const db = firebase.firestore();
+
+    // 🔥 긴급 자동 진단 시스템: 왜 무한 로딩이 걸리는지 사용자에게 원인을 바로 알려줍니다.
+    db.collection("logos_dimensions").limit(1).get()
+    .then(() => {
+        console.log("✅ 파이어베이스 데이터베이스 정상 접속 완료!");
+    })
+    .catch((error) => {
+        alert("🚨 [서버 연결 오류 발생]\n데이터베이스 접속이 막혔습니다.\n\n원인 1: 학교나 회사 와이파이에서 보안을 이유로 접속을 차단함 (스마트폰 데이터로 켜보세요!)\n원인 2: 파이어베이스 사이트에서 'Firestore 데이터베이스'를 아직 안 만드심\n원인 3: 파이어베이스 규칙(Rules) 설정 오류\n\n상세 에러: " + error.message);
+    });
 
     const raw_db = {
         "르네 데카르트": { tree: "실존과 인식의 나무", quote: "나는 의심한다, 고로 존재한다.", view: "의심하고 회의하는 주체로 남으십시오.", q: ["AI가 취향을 저격할 때 '이게 진짜 내 생각일까?' 의심해 본다.", "챗GPT 답변이 완벽해도 진짜 '생각'은 아니라 느낀다.", "온라인 가상보다 현실의 내가 진짜다.", "질문을 던질 때 짜릿함을 느낀다.", "AI는 존재를 인식하지 못한다.", "무비판적 수용은 답답하다.", "정보는 의심부터 한다.", "의심하는 능력은 대체 불가하다.", "현실 세계가 더 중요하다.", "인간의 불완전한 사유가 더 가치 있다."] },
@@ -295,7 +307,7 @@
         "쇠렌 키르케고르": { tree: "실존과 인식의 나무", quote: "대중 속에 숨지 말고 단독자로 서라.", view: "알고리즘의 추천에 휩쓸리지 말고 스스로 결단하십시오.", q: ["알고리즘이 추천해주는 것보다 내가 직접 선택하는 것이 더 가치 있다.", "대중의 의견과 달라도 나만의 길을 가는 것이 중요하다.", "기계적인 효율성보다는 나의 결단이 주는 무게감을 사랑한다.", "정보의 홍수 속에서도 나라는 개인의 고유성은 사라지지 않는다.", "다수가 좋다고 하는 트렌드를 맹목적으로 따르지 않는다.", "AI가 내린 정답보다는 내가 치열하게 고민한 오답이 낫다.", "나의 실존적 불안은 기계가 결코 위로할 수 없다.", "대중 매체나 SNS가 나의 정체성을 대신 형성하는 것을 거부한다.", "선택의 책임을 기술이나 시스템에 떠넘기지 않는다.", "삶의 의미는 데이터로 계산할 수 없는 주관적인 것이다."] },
         "장폴 사르트르": { tree: "실존과 인식의 나무", quote: "실존은 본질에 앞선다.", view: "AI가 정해주는 데이터적 본질을 거부하고 자유롭게 창조하십시오.", q: ["나의 미래는 어떤 데이터나 알고리즘으로도 예측되거나 규정될 수 없다.", "주어진 환경이나 기술에 종속되지 않고 스스로를 창조해 나간다.", "자유로운 선택은 때론 두렵지만 포기할 수 없는 권리다.", "AI가 나를 분석한 결과표를 나의 본질이라고 믿지 않는다.", "인간은 기계와 달리 목적 없이 태어나 스스로 목적을 만든다.", "변화하는 기술 속에서도 나의 주체적 선택이 우선이다.", "알고리즘의 결정에 핑계를 대며 나의 책임을 회피하지 않는다.", "나는 언제나 이전의 나와 다르게 행동할 자유가 있다.", "정해진 규칙을 따르기보다 새로운 가치를 발명하는 쪽이다.", "기계가 제시하는 모범 답안은 나의 자유를 억압할 뿐이다."] },
         "존 설": { tree: "실존과 인식의 나무", quote: "통사론은 의미론이 될 수 없다.", view: "AI는 계산할 뿐 이해하지 못함을 기억하십시오.", q: ["AI가 완벽한 문장을 만들어도 그 뜻을 이해했다고 생각하지 않는다.", "인간의 언어는 단순한 데이터 처리 이상의 의미를 지닌다.", "기계의 번역이 아무리 매끄러워도 인간이 느끼는 뉘앙스는 잡지 못한다.", "의식이나 감정은 오직 생물학적인 뇌에서만 발생할 수 있다고 믿는다.", "AI의 대답은 그럴듯한 흉내일 뿐 진짜 사고 과정이 아니다.", "단어를 기계적으로 조합하는 것과 의미를 깨닫는 것은 완전히 다르다.", "챗봇이 위로의 말을 건네도 진심이라고 느껴지지 않는다.", "컴퓨터는 규칙을 따를 뿐, 세계를 경험하지 못한다.", "정보를 계산하는 속도보다 그 정보의 진짜 의미를 파악하는 것이 중요하다.", "아무리 똑똑한 AI라도 결국 인간이 만든 기호 체계 안에 갇혀 있다."] },
-        "프리드리히 니체": { tree: "실존과 인식의 나무", quote: "신은 죽었다. 초인이 되어라.", view: "AI가 주는 편안함을 거부하고 스스로 가치를 창조하십시오.", q: ["기술이 주는 안락함에 빠져 나태해지는 것을 경계한다.", "알고리즘이 길들인 수동적인 대중의 삶에서 벗어나고 싶다.", "나를 극복하고 더 나은 존재로 나아가려는 의지가 강하다.", "세상이 정해준 옳고 그름을 의심하고 나만의 가치를 세우려 한다.", "고난과 시련조차 기계에 피하지 않고 정면으로 마주하고 싶다.", "편안한 가상 세계보다는 고통스럽더라도 피 끓는 현실을 택하겠다.", "정해진 시스템에 순응하는 대신 시스템을 부수고 창조하고 싶다.", "위험을 감수하더라도 나만의 강렬한 삶의 목적을 추구한다.", "나의 욕망은 AI의 예측 데이터 따위로 축소될 수 없다.", "절대적인 진리나 시스템 맹신하지 않고 스스로 삶의 주인이 된다."] },
+        "프리드리히 니체": { tree: "실존과 인식의 나무", quote: "신은 죽었다. 초인이 되어라.", view: "AI가 주는 편안함을 거부하고 스스로 가치를 창조하십시오.", q: ["기술이 주는 안락함에 빠져 나태해지는 것을 경계한다.", "알고리즘이 길들인 수동적인 대중의 삶에서 벗어나고 싶다.", "나를 극복하고 더 나은 존재로 나아가려는 의지가 강하다.", "세상이 정해준 옳고 그름을 의심하고 나만의 가치를 세우려 한다.", "고난과 시련조차 기계에 피하지 않고 정면으로 마주하고 싶다.", "편안한 가상 세계보다는 고통스럽더라도 피 끓는 현실을 택하겠다.", "정해진 시스템에 순응하는 대신 시스템을 부수고 창조하고 싶다.", "위험을 감수하더라도 나만의 강렬한 삶의 목적을 추구한다.", "나의 욕망은 AI의 예측 데이터 따위로 축소될 수 없다.", "절대적인 진리나 시스템을 맹신하지 않고 스스로 삶의 주인이 된다."] },
         "마르틴 하이데거": { tree: "기술 사회 비판의 나무", quote: "기술의 지배 속에서 부품으로 전락하지 마라.", view: "디지털 시스템의 부품이 되지 마십시오.", q: ["기계가 일상을 처리할 때 나는 부품 같다.", "모든 것이 효율적 수단으로 취급된다.", "기술 지배가 걱정된다.", "고유한 인간성이 마모된다.", "사물을 깊이 보는 여유를 잃었다.", "존재 의미를 상실해 간다.", "스마트 기기가 없으면 위기감을 느낀다.", "기술이 사유를 개조한다.", "명상적 사유가 시급하다.", "주체성 지키기는 외로운 싸움이다."] },
         "장 보드리야르": { tree: "기술 사회 비판의 나무", quote: "가짜 현실이 진짜를 지배하는 시대, 영혼을 구출하라.", view: "매혹적인 가짜 세계에서 현실을 지키세요.", q: ["AI 필터 사진이 더 진짜 같다.", "딥페이크가 현실감 있다.", "가상 세계가 더 편안하다.", "원본과 복제 구분이 안 된다.", "가짜 이미지가 현실을 대체했다.", "가상 라이프를 동경한다.", "뉴스가 조작된 과도현실 같다.", "그래픽 자연이 더 완벽하다.", "먹방 이미지가 욕망을 자극한다.", "기술은 현실을 복제물로 채운다."] },
         "미셸 푸코": { tree: "기술 사회 비판의 나무", quote: "권력은 지식이자 규율이다.", view: "데이터 감시 사회의 판옵티콘에서 벗어나십시오.", q: ["나의 모든 검색 기록이 누군가에게 감시당하고 있다는 느낌이 불쾌하다.", "알고리즘이 나의 행동을 특정한 방향으로 유도하고 통제한다고 생각한다.", "디지털 기기가 일상을 편리하게 해주기보다 나를 감시하는 규율처럼 느껴진다.", "SNS의 '좋아요' 시스템이 사람들을 일정한 기준에 맞추어 통제한다고 본다.", "데이터로 사람을 분류하고 등급을 매기는 사회 시스템에 저항감을 느낀다.", "기술 기업들이 쥐고 있는 정보력이 곧 억압적인 권력이라고 생각한다.", "보이지 않는 알고리즘의 잣대에 맞춰 내 행동을 스스로 검열한 적이 있다.", "사회의 보편적 기준이나 정상성에 얽매이지 않고 나만의 방식을 고수한다.", "스마트시티나 CCTV 확장이 안전보다는 통제를 위한 수단으로 보인다.", "기술 발전이 인간을 해방하기보다 오히려 더 교묘하게 길들인다고 본다."] },
@@ -313,7 +325,7 @@
         "N. 캐서린 헤일스": { tree: "포스트휴먼의 나무", quote: "우리는 정보와 물질이 얽힌 포스트휴먼이다.", view: "가상과 현실, 정보와 육체의 새로운 융합을 탐구하십시오.", q: ["나는 이미 스마트폰과 몸이 뗄 수 없는 하나처럼 융합되어 있다고 느낀다.", "정보는 육체나 물질을 벗어나 독립적으로 존재할 수 없고 서로 밀접하게 연결되어 있다.", "우리의 의식은 뇌 속에만 있는 것이 아니라 주변의 기기들과 네트워크를 통해 확장되어 있다.", "아날로그적인 육체의 감각과 디지털 정보의 흐름 사이에서 정체성의 혼란을 느낀다.", "순수하고 자연적인 인간의 몸이라는 개념은 이미 역사 속으로 사라졌다고 생각한다.", "가상현실 기술이 인간의 지각 방식과 신체 감각을 근본적으로 변화시키고 있다.", "인간은 기계와 대립하는 것이 아니라 기계 속에서 새로운 방식으로 육화되는 중이다.", "온라인에서 만들어진 나의 아바타나 데이터도 진짜 나의 신체의 일부처럼 느껴진다.", "생물학적 육체를 완전히 버리고 데이터로만 남는 것은 인간 경험의 중요한 부분을 잃는 것이다.", "디지털 코드와 현실의 물질세계가 어떻게 서로 영향을 미치는지에 관심이 많다."] },
         "노자장자": { tree: "동양 사상의 나무", quote: "기계의 소음을 끄고 마음의 고요를 찾아라.", view: "디지털 소음에서 벗어나 무위자연을 추구하십시오.", q: ["AI 스케줄보다 폰 끄고 자연을 보는 게 낫다.", "경쟁하기보다 마음의 빈자리를 지킨다.", "AI는 인위적인 괴물이다.", "기술로 다 해결하려는 태도는 오만이다.", "멍 때리는 시간이 생명수 같다.", "아무 쓸모없는 통나무 같은 삶이 좋다.", "기계에 묻지 않고 답이 떠오르길 기다린다.", "기술이 소박한 안식을 깼다.", "알림에 즉각 반응하지 않고 내 속도를 유지한다.", "자연에서 진짜 힐링을 받는다."] },
         "공자": { tree: "동양 사상의 나무", quote: "기술이 발달할수록 사람 사이의 인(仁)을 세워라.", view: "관계 속에서 예의와 도덕을 실천하십시오.", q: ["직접 눈 맞추는 아날로그 관계 속에서 인간성이 완성된다.", "기계는 진정한 공감과 도덕을 흉내 낼 수 없다.", "기본적 도리와 예의 교육이 더 필요하다.", "온라인보다 오프라인의 우정과 효도가 먼저다.", "훌륭한 인성을 돕는 교육이 올바르다.", "익명성 뒤 예의 없는 비방에 분노를 느낀다.", "공동체 상생을 위해 양보하는 태도가 아름답다.", "효율성 탓에 사회의 정이 메말라간다.", "유교적 윤리관이 기술 폭주를 막을 방파제다.", "진짜 리더십은 측은지심에서 나온다."] },
-        "원효대사": { tree: "동양 사상의 나무", quote: "일체유심조(一切唯心造), 모든 것은 오직 마음이 지어낸다.", view: "가상현실도 결국 마음의 투영임을 깨달으십시오.", q: ["AI가 만든 가상 세계나 현실이나 결국 내 마음이 어떻게 받아들이냐에 달려 있다.", "기술이 주는 편리함이나 불안함 모두 내 내면의 투영일 뿐이다.", "디지털 세계의 화려한 이미지에 집착하지 않고 마음의 고요를 유지하려 한다.", "정보의 옳고 그름을 따지기 전에 내 마음의 중심이 잡혀 있는지 먼저 돌아본다.", "메타버스와 가상 공간에서도 중요한 것은 사람을 향한 자비와 깨달음이다.", "기술의 발전이 인간을 구원하거나 파멸시키는 것이 아니라, 우리의 마음가짐이 결정한다.", "세상의 모든 데이터와 정보는 결국 허상이며, 집착할 필요가 없다고 느낀다.", "나와 기계, 나와 타인을 엄격하게 구분 짓는 분별심을 버리고자 단다.", "알고리즘의 시끄러운 유혹 속에서도 내 마음의 본성을 잃지 않을 자신이 있다.", "스마트폰을 들여다보는 대신 내 안의 평화를 들여다보는 명상의 시간이 소중하다."]
+        "원효대사": { tree: "동양 사상의 나무", quote: "일체유심조(一切唯心造), 모든 것은 오직 마음이 지어낸다.", view: "가상현실도 결국 마음의 투영임을 깨달으십시오.", q: ["AI가 만든 가상 세계나 현실이나 결국 내 마음이 어떻게 받아들이냐에 달려 있다.", "기술이 주는 편리함이나 불안함 모두 내 내면의 투영일 뿐이다.", "디지털 세계의 화려한 이미지에 집착하지 않고 마음의 고요를 유지하려 한다.", "정보의 옳고 그름을 따지기 전에 내 마음의 중심이 잡혀 있는지 먼저 돌아본다.", "메타버스와 가상 공간에서도 중요한 것은 사람을 향한 자비와 깨달음이다.", "기술의 발전이 인간을 구원하거나 파멸시키는 것이 아니라, 우리의 마음가짐이 결정한다.", "세상의 모든 데이터와 정보는 결국 허상이며, 집착할 필요가 없다고 느낀다.", "나와 기계, 나와 타인을 엄격하게 구분 짓는 분별심을 버리고자 단다.", "알고리즘의 시끄러운 유혹 속에서도 내 마음의 본성을 잃지 않을 자신이 있다.", "스마트폰을 들여다보는 대신 내 안의 평화를 들여다보는 명상의 시간이 소중하다."] }
     };
 
     let globalDimensions = [];
@@ -329,53 +341,35 @@
     let pendingNote = null;      
     let isPlantingMode = false;  
 
-    // ★ 셧다운 차단용 긴급 패치: 서버 연결 상태와 관계없이 로비를 무조건 강제 가동시킴
-    function initFirebaseListeners() {
-        try {
-            db.collection("logos_dimensions").onSnapshot((snapshot) => {
-                globalDimensions = [];
-                snapshot.forEach((doc) => {
-                    let data = doc.data();
-                    data.dimId = doc.id;
-                    globalDimensions.push(data);
-                });
-                
-                // 시간 순 정렬
-                globalDimensions.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+    // 🔥 어떤 서버 에러가 나도 브라우저가 멈추지 않고 화면부터 먼저 열어주는 무적 리스너
+    db.collection("logos_dimensions").onSnapshot((snapshot) => {
+        globalDimensions = [];
+        snapshot.forEach((doc) => {
+            let data = doc.data();
+            data.dimId = doc.id;
+            globalDimensions.push(data);
+        });
+        globalDimensions.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 
-                if(!document.getElementById('screen-dimension-select').classList.contains('hidden')) {
-                    renderCurrentCategoryUI();
-                }
-                updateAdminFilterOptions();
-            }, (error) => {
-                console.log("서버가 비어있거나 연결 대기 중입니다. 기본 모드로 로비를 우선 실행합니다.");
-                renderCurrentCategoryUI(); 
-            });
-        } catch(e) {
-            console.error("리스너 A 오류 방어: ", e);
+        if(!document.getElementById('screen-dimension-select').classList.contains('hidden')) {
             renderCurrentCategoryUI();
         }
+        updateAdminFilterOptions();
+    });
 
-        try {
-            db.collection("logos_notes").onSnapshot((snapshot) => {
-                globalNotes = []; 
-                snapshot.forEach((doc) => {
-                    let data = doc.data();
-                    data.docId = doc.id; 
-                    globalNotes.push(data);
-                });
-                if (!document.getElementById('screen-forest').classList.contains('hidden')) {
-                    renderForestSelection();
-                } else if (!document.getElementById('screen-specific-forest').classList.contains('hidden') && !isPlantingMode) {
-                    openSpecificForest(currentOpenForestName);
-                }
-            }, (error) => {
-                console.log("노트 리더기 대기 중...");
-            });
-        } catch(e) {
-            console.error("리스너 B 오류 방어: ", e);
+    db.collection("logos_notes").onSnapshot((snapshot) => {
+        globalNotes = []; 
+        snapshot.forEach((doc) => {
+            let data = doc.data();
+            data.docId = doc.id; 
+            globalNotes.push(data);
+        });
+        if (!document.getElementById('screen-forest').classList.contains('hidden')) {
+            renderForestSelection();
+        } else if (!document.getElementById('screen-specific-forest').classList.contains('hidden') && !isPlantingMode) {
+            openSpecificForest(currentOpenForestName);
         }
-    }
+    });
 
     function switchCategory(cat) {
         currentCategory = cat;
@@ -404,7 +398,7 @@
             <div class="dimension-list-container">`;
 
             if(globalDimensions.length === 0) {
-                html += `<p style="text-align:center; color:#9abfa6; padding:20px; font-size:13px;">개설된 다른 차원이 없습니다. 다른 탭을 눌러 첫 공간을 추가해 보세요!</p>`;
+                html += `<p style="text-align:center; color:#9abfa6; padding:20px; font-size:13px;">개설된 다른 차원이 없습니다. 우측 상단의 탭에서 공간을 추가해 보세요!</p>`;
             } else {
                 globalDimensions.forEach(dim => {
                     let count = globalNotes.filter(n => n.dimensionId === dim.dimId).length;
@@ -571,8 +565,7 @@
             document.getElementById('dim-create-box').classList.add('hidden');
             renderCurrentCategoryUI();
         }).catch(err => {
-            console.error("차원 저장 에러: ", err.message);
-            alert("저장 실패! 규칙(Rules) 탭 설정을 확인하세요.");
+            alert("저장 실패! 파이어베이스 연결이 끊겼습니다.");
         });
     }
 
@@ -791,7 +784,7 @@
             console.log("파이어베이스 서버 업로드 성공!");
         })
         .catch(err => {
-            console.error("서버 거부 에러: ", err.message);
+            console.error("서버 저장 실패: ", err.message);
         });
 
         globalNotes.push(noteToSave);
@@ -975,7 +968,7 @@
         document.body.appendChild(link); link.click(); document.body.removeChild(link);
     }
     
-    // ★ 셧다운 차단용 완전 패치: 리스너가 차단되어도 로비 창 UI를 무조건 강제 개방함
+    // 🔥 시작 스크립트: 무조건 화면부터 띄우고 진단 실시
     function initApp() {
         document.getElementById('screen-dimension-select').classList.remove('hidden');
         document.getElementById('screen-start').classList.add('hidden');
@@ -985,9 +978,7 @@
         document.getElementById('screen-forest').classList.add('hidden');
         document.getElementById('screen-specific-forest').classList.add('hidden');
         
-        // UI를 먼저 열어놓고 서버 연동 개시 (화면 멈춤 완전 차단)
         switchCategory('all');
-        initFirebaseListeners(); 
     }
 
     initApp();
